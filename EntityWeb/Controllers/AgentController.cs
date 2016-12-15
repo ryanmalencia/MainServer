@@ -10,11 +10,13 @@ namespace ConsoleWebAPI.Controllers
     [EnableCors("*","*","*")]
     public class AgentController : ApiController
     {
+        private AgentDBInteraction dbinteration = new AgentDBInteraction();
+
         [Route("api/agent/getallagents")]
         [HttpGet]
         public IHttpActionResult GetAllMachines()
         {
-            return Ok(JsonConvert.SerializeObject(AgentDBInteraction.GetAllAgents()));
+            return Ok(JsonConvert.SerializeObject(dbinteration.GetAllAgents()));
         }
 
         [Route("api/agent/getidleagents")]
@@ -35,7 +37,7 @@ namespace ConsoleWebAPI.Controllers
         [HttpPut]
         public void Put(Agent agent)
         {
-            AgentInteraction.Add(agent);
+            dbinteration.Add(agent);
         }
 
         [Route("api/agent/givejob/{agent}/{pk_job}")]

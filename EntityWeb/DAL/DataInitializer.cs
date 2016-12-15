@@ -7,7 +7,7 @@ using DataTypes;
 
 namespace EntityWeb.DAL
 {
-    public class DataInitializer : System.Data.Entity.CreateDatabaseIfNotExists<DataContext>
+    public class DataInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<DataContext>
     {
         protected override void Seed(DataContext context)
         {
