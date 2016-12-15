@@ -245,11 +245,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\GitHub\ConsoleWebAPI\DataTypes\DataTypes.csproj">
+    <ProjectReference Include="..\..\ConsoleWebAPI\DataTypes\DataTypes.csproj">
       <Project>{50440a0d-dadf-4356-95e3-b3b6c766c181}</Project>
       <Name>DataTypes</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\GitHub\ConsoleWebAPI\DBInteraction\DBInteraction.csproj">
+    <ProjectReference Include="..\..\ConsoleWebAPI\DBInteraction\DBInteraction.csproj">
       <Project>{f803c300-22a6-443d-b930-fd44fe5b14c3}</Project>
       <Name>DBInteraction</Name>
     </ProjectReference>

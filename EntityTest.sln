@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.25920.0
+VisualStudioVersion = 15.0.25928.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityWeb", "EntityWeb\EntityWeb.csproj", "{49F89E39-FB5B-40A9-B7C6-A87E738A7BE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTypes", "..\..\..\GitHub\ConsoleWebAPI\DataTypes\DataTypes.csproj", "{50440A0D-DADF-4356-95E3-B3B6C766C181}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTypes", "..\ConsoleWebAPI\DataTypes\DataTypes.csproj", "{50440A0D-DADF-4356-95E3-B3B6C766C181}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBInteraction", "..\..\..\GitHub\ConsoleWebAPI\DBInteraction\DBInteraction.csproj", "{F803C300-22A6-443D-B930-FD44FE5B14C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBInteraction", "..\ConsoleWebAPI\DBInteraction\DBInteraction.csproj", "{F803C300-22A6-443D-B930-FD44FE5B14C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
