@@ -79,7 +79,7 @@ namespace ConsoleWebAPI.Controllers
         [HttpPut]
         public void PutIP(Agent agent)
         {
-            AgentInteraction.UpdateIP(agent);
+            //AgentInteraction.UpdateIP(agent);
         }
     }
 }

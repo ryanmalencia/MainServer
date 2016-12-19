@@ -33,5 +33,10 @@ namespace EntityWeb.DBInteraction
             db.Agents.Add(agent);
             db.SaveChanges();
         }
+
+        public void SetAgentRunning(Agent agent, int pk_job)
+        {
+
+        }
     }
 }
