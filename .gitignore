@@ -4,6 +4,7 @@ ehthumbs.db
 
 *.exe
 *.dll
+*.suo
 *.pdb
 packages
 */bin
