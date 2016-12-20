@@ -2,6 +2,7 @@
 using System.Web.Http.Cors;
 using Newtonsoft.Json;
 using DBInteraction;
+using DataTypes;
 
 namespace ConsoleWebAPI.Controllers
 {
