@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using EntityWeb.DAL;
+﻿using EntityWeb.DAL;
 using DataTypes;
+using DBInteraction;
 
 namespace EntityWeb.DBInteraction
 {
@@ -30,9 +30,24 @@ namespace EntityWeb.DBInteraction
             db.SaveChanges();
         }
 
-        public void SetAgentRunning(Agent agent, int pk_job)
+        public void SetAgentRunning(string Agent, int pk_job)
         {
+            AgentInteraction.SetAgentRunning(Agent, pk_job);
+        }
 
+        public AgentCollection GetIdleMachines()
+        {
+            return AgentInteraction.GetIdleAgents();
+        }
+
+        public Agent Get(string AgentName)
+        {
+            return AgentInteraction.Get(AgentName);
+        }
+
+        public void SetAgentQueued(string Agent)
+        {
+            AgentInteraction.SetAgentQueued(Agent);
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Web.Http.Cors;
 using Newtonsoft.Json;
 using DBInteraction;
 using DataTypes;
-using EntityWeb.DBInteraction;
 using EntityWeb.Logic;
 
 namespace ConsoleWebAPI.Controllers
@@ -12,7 +11,6 @@ namespace ConsoleWebAPI.Controllers
     public class AgentController : ApiController
     {
         private AgentLogic AgentLogic = new AgentLogic();
-
         [Route("api/agent/getallagents")]
         [HttpGet]
         public IHttpActionResult GetAllMachines()
@@ -24,14 +22,14 @@ namespace ConsoleWebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetIdleMachines()
         {
-            return Ok(JsonConvert.SerializeObject(AgentInteraction.GetIdleAgents()));
+            return Ok(JsonConvert.SerializeObject(AgentLogic.GetIdleAgents()));
         }
 
         [Route("api/agent/getagent/{name}")]
         [HttpGet]
         public IHttpActionResult GetOneMachine(string name)
         {
-            return Ok(JsonConvert.SerializeObject(AgentInteraction.Get(name)));
+            return Ok(JsonConvert.SerializeObject(AgentLogic.Get(name)));
         }
 
         [Route("api/agent/add/")]
@@ -45,14 +43,14 @@ namespace ConsoleWebAPI.Controllers
         [HttpPut]
         public void PutRunning(string agent, int pk_job)
         {
-            AgentInteraction.SetAgentRunning(agent, pk_job);
+            AgentLogic.SetAgentRunning(agent, pk_job);
         }
 
         [Route("api/agent/setqueued/{agent}")]
         [HttpPut]
         public void PutQueued(string agent)
         {
-            AgentInteraction.SetAgentQueued(agent);
+            AgentLogic.SetAgentQueued(agent);
         }
 
         [Route("api/agent/setidle/{agent}")]
