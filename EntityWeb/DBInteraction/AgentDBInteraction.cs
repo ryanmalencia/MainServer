@@ -13,15 +13,14 @@ namespace EntityWeb.DBInteraction
             db = new DataContext();
         }
 
-        public List<Agent> GetAllAgents()
+        public AgentCollection GetAllAgents()
         {
-            List<Agent> Agents = new List<Agent>();
+            AgentCollection Agents = new AgentCollection();
 
-            foreach(Agent agent in db.Agents)
+            foreach (Agent agent in db.Agents)
             {
-                Agents.Add(agent);
+                Agents.AddMachine(agent);
             }
-
             return Agents;
         }
 

@@ -4,19 +4,20 @@ using Newtonsoft.Json;
 using DBInteraction;
 using DataTypes;
 using EntityWeb.DBInteraction;
+using EntityWeb.Logic;
 
 namespace ConsoleWebAPI.Controllers
 {
     [EnableCors("*","*","*")]
     public class AgentController : ApiController
     {
-        private AgentDBInteraction dbinteration = new AgentDBInteraction();
+        private AgentLogic AgentLogic = new AgentLogic();
 
         [Route("api/agent/getallagents")]
         [HttpGet]
         public IHttpActionResult GetAllMachines()
         {
-            return Ok(JsonConvert.SerializeObject(dbinteration.GetAllAgents()));
+            return Ok(JsonConvert.SerializeObject(AgentLogic.GetAllAgents()));
         }
 
         [Route("api/agent/getidleagents")]
@@ -37,7 +38,7 @@ namespace ConsoleWebAPI.Controllers
         [HttpPut]
         public void Put(Agent agent)
         {
-            dbinteration.Add(agent);
+            AgentLogic.Add(agent);
         }
 
         [Route("api/agent/givejob/{agent}/{pk_job}")]
