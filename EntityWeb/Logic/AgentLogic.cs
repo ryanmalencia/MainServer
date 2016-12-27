@@ -56,5 +56,29 @@ namespace EntityWeb.Logic
         {
             AgentDB.SetAgentQueued(AgentName);
         }
+        /// <summary>
+        /// Set Specified Agent to Idle State
+        /// </summary>
+        /// <param name="AgentName">Agent Hostname to Set</param>
+        public void SetAgentIdle(string AgentName)
+        {
+            AgentDB.SetAgentIdle(AgentName);
+        }
+        /// <summary>
+        /// Set Specified Agent to Dead State
+        /// </summary>
+        /// <param name="AgentName">Agent Hostname to Set</param>
+        public void SetAgentDead(string AgentName)
+        {
+            AgentDB.SetAgentDead(AgentName);
+        }
+        /// <summary>
+        /// Delete the Specified Agent
+        /// </summary>
+        /// <param name="AgentName">Agent Hostname to Delete</param>
+        public void Delete(string AgentName)
+        {
+            AgentDB.Delete(AgentName);
+        }
     }
 }

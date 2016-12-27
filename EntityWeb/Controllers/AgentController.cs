@@ -1,7 +1,6 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Cors;
 using Newtonsoft.Json;
-using DBInteraction;
 using DataTypes;
 using EntityWeb.Logic;
 
@@ -57,21 +56,21 @@ namespace ConsoleWebAPI.Controllers
         [HttpPut]
         public void PutIdle(string agent)
         {
-            AgentInteraction.SetAgentIdle(agent);
+            AgentLogic.SetAgentIdle(agent);
         }
 
         [Route("api/agent/setdead/{agent}")]
         [HttpPut]
         public void PutDead(string agent)
         {
-            AgentInteraction.SetAgentDead(agent);
+            AgentLogic.SetAgentDead(agent);
         }
 
         [Route("api/agent/delete/{name}")]
         [HttpDelete]
         public void Delete(string name)
         {
-            AgentInteraction.Delete(name);
+            AgentLogic.Delete(name);
         }
 
         [Route("api/agent/updateip/")]

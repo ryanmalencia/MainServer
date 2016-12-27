@@ -45,9 +45,24 @@ namespace EntityWeb.DBInteraction
             return AgentInteraction.Get(AgentName);
         }
 
-        public void SetAgentQueued(string Agent)
+        public void SetAgentQueued(string AgentName)
         {
-            AgentInteraction.SetAgentQueued(Agent);
+            AgentInteraction.SetAgentQueued(AgentName);
+        }
+
+        public void SetAgentIdle(string AgentName)
+        {
+            AgentInteraction.SetAgentIdle(AgentName);
+        }
+
+        public void SetAgentDead(string AgentName)
+        {
+            AgentInteraction.SetAgentDead(AgentName);
+        }
+
+        public void Delete(string AgentName)
+        {
+            AgentInteraction.Delete(AgentName);
         }
     }
 }
