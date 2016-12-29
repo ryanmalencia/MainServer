@@ -11,13 +11,12 @@
 
 $(function () {
 
-    var ticker = $.connection.InformationHub, $infoTable = $('#infoTable'), rowTemplate = '<tr data-symbol="{Id}"><td>{Id}</td><td>{Name}</td></tr>';
+    var ticker = $.connection.InformationHub, $infoTable = $('#infoTable'), rowTemplate = '<tr data-symbol="{Name}"><td>1</td><td>{Name}</td></tr>';
     $infoTableBody = $infoTable.find('tbody');
 
     function formatInfo(info) {
         return $.extend(info, {
             Name: info.Name,
-            Id: info.Id
         });
     }
 
@@ -34,7 +33,10 @@ $(function () {
     ticker.client.updateInformation = function (info) {
         var displayInfo = formatInfo(info),
             $row = $(rowTemplate.supplant(displayInfo));
-        $infoTableBody.find('tr[data-symbol=' + info.Id + ']').replaceWith($row);
+        var $therow = $infoTableBody.find('tr[data-symbol=' + info.Name + ']');
+        if ($therow[0] == null) {
+            $infoTableBody.append(rowTemplate.supplant(info));
+        }
     }
 
     $.connection.hub.start().done(init);

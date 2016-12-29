@@ -1,11 +1,13 @@
 ﻿using EntityWeb.DBInteraction;
 using DataTypes;
+using SignalR.InformationTicker;
 
 namespace EntityWeb.Logic
 {
     public class AgentLogic
     {
-        public AgentDBInteraction AgentDB = new AgentDBInteraction();
+        private AgentDBInteraction AgentDB = new AgentDBInteraction();
+        private InformationTicker InformationTicker = InformationTicker.Instance;
         /// <summary>
         /// Get All Agents in DB
         /// </summary>
@@ -21,6 +23,8 @@ namespace EntityWeb.Logic
         public void Add(Agent agent)
         {
             AgentDB.Add(agent);
+            //Here we trigger SignalR to show that a new agent has been added
+            InformationTicker.AddAgent(agent);
         }
         /// <summary>
         /// Get All Idle Agents

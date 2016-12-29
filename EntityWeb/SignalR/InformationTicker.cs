@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using System.Threading;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
+using DataTypes;
+using EntityWeb.DBInteraction;
 
 namespace SignalR.InformationTicker
 {
     public class InformationTicker
     {
         private readonly static Lazy<InformationTicker> _instance = new Lazy<InformationTicker>(() => new InformationTicker(GlobalHost.ConnectionManager.GetHubContext<InformationTickerHub>().Clients));
-        private readonly ConcurrentDictionary<string, Information> _information = new ConcurrentDictionary<string, Information>();
+        private readonly ConcurrentDictionary<string, Agent> _information = new ConcurrentDictionary<string, Agent>();
         private readonly object _informationLock = new object();
         private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(1000);
         private readonly Timer _timer;
@@ -19,14 +21,11 @@ namespace SignalR.InformationTicker
         private InformationTicker(IHubConnectionContext<dynamic> clients)
         {
             Clients = clients;
-            var information = new List<Information>
-            {
-                new Information {Id = 1, Name = "One" },
-                new Information {Id = 2, Name = "Two" }
-            };
-            information.ForEach(info => _information.TryAdd(info.Name, info));
+            AgentDBInteraction interaction = new AgentDBInteraction();
+            var information = interaction.GetAllAgents();
+            information.machines.ForEach(info => _information.TryAdd(info.Name, info));
 
-            _timer = new Timer(UpdateInformation, null, _updateInterval, _updateInterval);
+            //_timer = new Timer(UpdateInformation, null, _updateInterval, _updateInterval);
         }
 
         public static InformationTicker Instance
@@ -37,7 +36,7 @@ namespace SignalR.InformationTicker
             }
         }
 
-        public IEnumerable<Information> GetAllInformation()
+        public IEnumerable<Agent> GetAllInformation()
         {
             return _information.Values;
         }
@@ -57,27 +56,20 @@ namespace SignalR.InformationTicker
                     _updatingInformation = true;
                     foreach(var info in _information.Values)
                     {
-                        if(TryUpdateInformation(info))
-                        {
-                            BroadcastInformation(info);
-                        }
+                        BroadcastInformation(info);
                     }
                     _updatingInformation = false;
                 }
             }
         }
 
-        private bool TryUpdateInformation(Information info)
+        public void AddAgent(Agent agent)
         {
-            if(info.Name.Length > 7)
-            {
-                info.Name = info.Name.Split('!')[0];
-            }
-            info.Name = info.Name + "!";
-            return true;
+            _information.TryAdd(agent.Name, agent);
+            UpdateInformation(null);
         }
 
-        private void BroadcastInformation(Information info)
+        private void BroadcastInformation(Agent info)
         {
             Clients.All.updateInformation(info);
         }

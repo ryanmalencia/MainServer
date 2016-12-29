@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
+using DataTypes;
 
 namespace SignalR.InformationTicker
 {
@@ -16,7 +17,7 @@ namespace SignalR.InformationTicker
             _informationTicker = infoTicker;
         }
 
-        public IEnumerable<Information> getAllInformation()
+        public IEnumerable<Agent> getAllInformation()
         {
             return _informationTicker.GetAllInformation();
         }
