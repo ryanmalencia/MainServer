@@ -1,5 +1,6 @@
 ﻿using EntityWeb.DAL;
 using DataTypes;
+using System.Linq;
 using DBInteraction;
 
 namespace EntityWeb.DBInteraction
@@ -63,6 +64,19 @@ namespace EntityWeb.DBInteraction
         public void Delete(string AgentName)
         {
             AgentInteraction.Delete(AgentName);
+        }
+
+        public void Update(Agent Agent)
+        {
+            var NewAgent = db.Agents.FirstOrDefault(a => a.Name.ToLower() == Agent.Name.ToLower());
+            if(NewAgent != null)
+            {
+                if (NewAgent.IP != Agent.IP)
+                {
+                    NewAgent.IP = Agent.IP;
+                    db.SaveChanges();
+                }
+            }
         }
     }
 }

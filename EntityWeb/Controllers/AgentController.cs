@@ -66,18 +66,18 @@ namespace ConsoleWebAPI.Controllers
             AgentLogic.SetAgentDead(agent);
         }
 
-        [Route("api/agent/delete/{name}")]
+        [Route("api/agent/delete/{agent}")]
         [HttpDelete]
-        public void Delete(string name)
+        public void Delete(string agent)
         {
-            AgentLogic.Delete(name);
+            AgentLogic.Delete(agent);
         }
 
-        [Route("api/agent/updateip/")]
+        [Route("api/agent/update")]
         [HttpPut]
-        public void PutIP(Agent agent)
+        public void PutUpdate(Agent agent)
         {
-            //AgentInteraction.UpdateIP(agent);
+            AgentLogic.Update(agent);
         }
     }
 }

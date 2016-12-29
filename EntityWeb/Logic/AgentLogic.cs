@@ -80,5 +80,13 @@ namespace EntityWeb.Logic
         {
             AgentDB.Delete(AgentName);
         }
+        /// <summary>
+        /// Update an Agent
+        /// </summary>
+        /// <param name="Agent">Agent to Update</param>
+        public void Update(Agent Agent)
+        {
+            AgentDB.Update(Agent);
+        }
     }
 }
