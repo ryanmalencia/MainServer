@@ -15,7 +15,6 @@ namespace SignalR.InformationTicker
         private readonly ConcurrentDictionary<string, Agent> _information = new ConcurrentDictionary<string, Agent>();
         private readonly object _informationLock = new object();
         private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(1000);
-        private readonly Timer _timer;
         private volatile bool _updatingInformation = false;
 
         private InformationTicker(IHubConnectionContext<dynamic> clients)
@@ -23,7 +22,7 @@ namespace SignalR.InformationTicker
             Clients = clients;
             AgentDBInteraction interaction = new AgentDBInteraction();
             var information = interaction.GetAllAgents();
-            information.machines.ForEach(info => _information.TryAdd(info.Name, info));
+            information.Agents.ForEach(info => _information.TryAdd(info.Name, info));
 
             //_timer = new Timer(UpdateInformation, null, _updateInterval, _updateInterval);
         }

@@ -32,7 +32,7 @@ namespace EntityWeb.Logic
         /// <returns>AgentCollection contaning idle Agents</returns>
         public AgentCollection GetIdleAgents()
         {
-            return AgentDB.GetIdleMachines();
+            return AgentDB.GetIdleAgents();
         }
         /// <summary>
         /// Get Agent Based On HostName

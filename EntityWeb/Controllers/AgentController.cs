@@ -19,7 +19,7 @@ namespace ConsoleWebAPI.Controllers
 
         [Route("api/agent/getidleagents")]
         [HttpGet]
-        public IHttpActionResult GetIdleMachines()
+        public IHttpActionResult GetIdleAgents()
         {
             return Ok(JsonConvert.SerializeObject(AgentLogic.GetIdleAgents()));
         }
