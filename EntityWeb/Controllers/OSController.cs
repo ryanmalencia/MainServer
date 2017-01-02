@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Cors;
 using Newtonsoft.Json;
-using DBInteraction;
+using EntityWeb.Logic;
 using DataTypes;
 
 namespace ConsoleWebAPI.Controllers
@@ -9,11 +9,12 @@ namespace ConsoleWebAPI.Controllers
     [EnableCors("*", "*", "*")]
     public class OSController : ApiController
     {
+        private OSLogic OSLogic = new OSLogic();
         [Route("api/os/getallos")]
         [HttpGet]
-        public IHttpActionResult GetAllMachines()
+        public IHttpActionResult GetAllOSes()
         {
-            return Ok(JsonConvert.SerializeObject(OSInteraction.Get()));
+            return Ok(JsonConvert.SerializeObject(OSLogic.GetAllOSes()));
         }
     }
 }

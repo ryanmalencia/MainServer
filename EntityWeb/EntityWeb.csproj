@@ -200,13 +200,19 @@
     <Compile Include="DAL\DataContext.cs" />
     <Compile Include="DAL\DataInitializer.cs" />
     <Compile Include="DBInteraction\AgentDBInteraction.cs" />
+    <Compile Include="DBInteraction\JobDBInteraction.cs" />
+    <Compile Include="DBInteraction\OSDBInteraction.cs" />
+    <Compile Include="DBInteraction\PoolDBInteraction.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logic\AgentLogic.cs" />
-    <Compile Include="SignalR\Information.cs" />
-    <Compile Include="SignalR\InformationTicker.cs" />
-    <Compile Include="SignalR\InformationTickerHub.cs" />
+    <Compile Include="Logic\JobLogic.cs" />
+    <Compile Include="Logic\OSLogic.cs" />
+    <Compile Include="Logic\PoolLogic.cs" />
+    <Compile Include="SignalR\AgentInfo.cs" />
+    <Compile Include="SignalR\AgentTicker.cs" />
+    <Compile Include="SignalR\AgentTickerHub.cs" />
     <Compile Include="SignalR\Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

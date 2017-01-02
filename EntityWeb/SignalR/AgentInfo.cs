@@ -1,6 +1,6 @@
-﻿namespace SignalR.InformationTicker
+﻿namespace SignalR.AgentTicker
 {
-    public class Information
+    public class AgentInfo
     {
         public int Id { get; set; }
         public string Name { get; set; }

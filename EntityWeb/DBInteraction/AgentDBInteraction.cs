@@ -1,7 +1,6 @@
 ﻿using EntityWeb.DAL;
 using DataTypes;
 using System.Linq;
-using DBInteraction;
 
 namespace EntityWeb.DBInteraction
 {

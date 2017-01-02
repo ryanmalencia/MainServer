@@ -1,13 +1,13 @@
 ﻿using EntityWeb.DBInteraction;
 using DataTypes;
-using SignalR.InformationTicker;
+using SignalR.AgentTicker;
 
 namespace EntityWeb.Logic
 {
     public class AgentLogic
     {
         private AgentDBInteraction AgentDB = new AgentDBInteraction();
-        private InformationTicker InformationTicker = InformationTicker.Instance;
+        private AgentTicker InformationTicker = AgentTicker.Instance;
         /// <summary>
         /// Get All Agents in DB
         /// </summary>

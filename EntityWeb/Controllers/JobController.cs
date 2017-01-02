@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Cors;
 using Newtonsoft.Json;
-using DBInteraction;
+using EntityWeb.Logic;
 using DataTypes;
 
 namespace ConsoleWebAPI.Controllers
@@ -9,46 +9,47 @@ namespace ConsoleWebAPI.Controllers
     [EnableCors("*", "*", "*")]
     public class JobController : ApiController
     {
+        private JobLogic JobLogic = new JobLogic();
         [Route("api/job/getalljobs")]
         [HttpGet]
         public IHttpActionResult GetAllJobs()
         {
-            return Ok(JsonConvert.SerializeObject(JobInteraction.Get()));
+            return Ok(JsonConvert.SerializeObject(JobLogic.GetAllJobs()));
         }
 
-        [Route("api/job/getbypk/{pk}")]
+        [Route("api/job/getbypk/{id}")]
         [HttpGet]
-        public IHttpActionResult GetJobByPk(int pk)
+        public IHttpActionResult GetJobById(int id)
         {
-            return Ok(JsonConvert.SerializeObject(JobInteraction.GetJobByPk(pk)));
+            return Ok(JsonConvert.SerializeObject(JobLogic.GetJobById(id)));
         }
 
         [Route("api/job/setdist")]
         [HttpPut]
         public void PutDist(Job job)
         {
-            JobInteraction.PutDist(job);
+            JobLogic.PutDist(job);
         }
 
         [Route("api/job/setstarted")]
         [HttpPut]
         public void PutStarted(Job job)
         {
-            JobInteraction.PutStarted(job);
+            JobLogic.PutStarted(job);
         }
 
         [Route("api/job/setfinished")]
         [HttpPut]
         public void PutFinished(Job job)
         {
-            JobInteraction.PutFinished(job);
+            JobLogic.PutFinished(job);
         }
 
         [Route("api/job/reset")]
         [HttpPut]
         public void PutReset(Job job)
         {
-            JobInteraction.PutReset(job);
+            JobLogic.PutReset(job);
         }
     }
 }
