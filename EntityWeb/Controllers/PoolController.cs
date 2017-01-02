@@ -1,7 +1,6 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Cors;
 using Newtonsoft.Json;
-using DBInteraction;
 using EntityWeb.Logic;
 
 namespace ConsoleWebAPI.Controllers

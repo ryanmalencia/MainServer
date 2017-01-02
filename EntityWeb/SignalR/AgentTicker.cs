@@ -67,6 +67,16 @@ namespace SignalR.AgentTicker
             UpdateInformation(null);
         }
 
+        public void SetAgentRunning(string AgentName)
+        {
+            Clients.All.updateRunning(AgentName);
+        }
+
+        public void SetAgentIdle(string AgentName)
+        {
+            Clients.All.updateIdle(AgentName);
+        }
+
         private void BroadcastInformation(Agent info)
         {
             Clients.All.updateInformation(info);

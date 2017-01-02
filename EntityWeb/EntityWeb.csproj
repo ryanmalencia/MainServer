@@ -201,6 +201,7 @@
     <Compile Include="DAL\DataInitializer.cs" />
     <Compile Include="DBInteraction\AgentDBInteraction.cs" />
     <Compile Include="DBInteraction\JobDBInteraction.cs" />
+    <Compile Include="DBInteraction\JobTaskDBInteraction.cs" />
     <Compile Include="DBInteraction\OSDBInteraction.cs" />
     <Compile Include="DBInteraction\PoolDBInteraction.cs" />
     <Compile Include="Global.asax.cs">
@@ -208,6 +209,7 @@
     </Compile>
     <Compile Include="Logic\AgentLogic.cs" />
     <Compile Include="Logic\JobLogic.cs" />
+    <Compile Include="Logic\JobTaskLogic.cs" />
     <Compile Include="Logic\OSLogic.cs" />
     <Compile Include="Logic\PoolLogic.cs" />
     <Compile Include="SignalR\AgentInfo.cs" />
@@ -239,7 +241,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\MainScript1.0.1.js" />
+    <Content Include="Scripts\MainScript1.0.2.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -282,10 +284,6 @@
     <ProjectReference Include="..\..\ConsoleWebAPI\DataTypes\DataTypes.csproj">
       <Project>{50440a0d-dadf-4356-95e3-b3b6c766c181}</Project>
       <Name>DataTypes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ConsoleWebAPI\DBInteraction\DBInteraction.csproj">
-      <Project>{f803c300-22a6-443d-b930-fd44fe5b14c3}</Project>
-      <Name>DBInteraction</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

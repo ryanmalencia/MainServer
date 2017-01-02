@@ -7,7 +7,7 @@ namespace EntityWeb.Logic
     public class AgentLogic
     {
         private AgentDBInteraction AgentDB = new AgentDBInteraction();
-        private AgentTicker InformationTicker = AgentTicker.Instance;
+        private AgentTicker AgentTicker = AgentTicker.Instance;
         /// <summary>
         /// Get All Agents in DB
         /// </summary>
@@ -24,7 +24,7 @@ namespace EntityWeb.Logic
         {
             AgentDB.Add(agent);
             //Here we trigger SignalR to show that a new agent has been added
-            InformationTicker.AddAgent(agent);
+            AgentTicker.AddAgent(agent);
         }
         /// <summary>
         /// Get All Idle Agents
@@ -51,6 +51,7 @@ namespace EntityWeb.Logic
         public void SetAgentRunning(string AgentName, int pk_job)
         {
             AgentDB.SetAgentRunning(AgentName, pk_job);
+            AgentTicker.SetAgentRunning(AgentName);
         }
         /// <summary>
         /// Set Specified Agent to Queued State
@@ -67,6 +68,7 @@ namespace EntityWeb.Logic
         public void SetAgentIdle(string AgentName)
         {
             AgentDB.SetAgentIdle(AgentName);
+            AgentTicker.SetAgentIdle(AgentName);
         }
         /// <summary>
         /// Set Specified Agent to Dead State

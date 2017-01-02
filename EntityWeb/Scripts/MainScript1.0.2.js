@@ -11,12 +11,14 @@
 
 $(function () {
 
-    var ticker = $.connection.InformationHub, $infoTable = $('#infoTable'), rowTemplate = '<tr data-symbol="{Name}"><td>1</td><td>{Name}</td></tr>';
+    var ticker = $.connection.InformationHub, $infoTable = $('#infoTable'), rowTemplate = '<tr data-symbol="{Name}"><td>{ID}</td><td>{Name}</td><td>{Running}</td></tr>';
     $infoTableBody = $infoTable.find('tbody');
 
     function formatInfo(info) {
         return $.extend(info, {
             Name: info.Name,
+            Running: info.Running_Job,
+            ID: info.AgentID,
         });
     }
 
@@ -28,6 +30,16 @@ $(function () {
                 $infoTableBody.append(rowTemplate.supplant(info));
             })
         });
+    }
+
+    ticker.client.updateRunning = function (name) {
+        var $therow = $infoTableBody.find('tr[data-symbol=' + name + ']');
+        $therow[0].style.backgroundColor = '#00FF00';
+    }
+
+    ticker.client.updateIdle = function (name) {
+        var $therow = $infoTableBody.find('tr[data-symbol=' + name + ']');
+        $therow[0].style.backgroundColor = '#FFFFFF';
     }
 
     ticker.client.updateInformation = function (info) {
