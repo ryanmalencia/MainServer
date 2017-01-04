@@ -17,7 +17,7 @@ namespace ConsoleWebAPI.Controllers
             return Ok(JsonConvert.SerializeObject(JobLogic.GetAllJobs()));
         }
 
-        [Route("api/job/getbypk/{id}")]
+        [Route("api/job/getbyid/{id}")]
         [HttpGet]
         public IHttpActionResult GetJobById(int id)
         {
