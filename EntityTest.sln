@@ -5,9 +5,9 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityWeb", "EntityWeb\EntityWeb.csproj", "{49F89E39-FB5B-40A9-B7C6-A87E738A7BE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTypes", "..\ConsoleWebAPI\DataTypes\DataTypes.csproj", "{50440A0D-DADF-4356-95E3-B3B6C766C181}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTypes", "DataTypes\DataTypes.csproj", "{50440A0D-DADF-4356-95E3-B3B6C766C181}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIClient", "..\ConsoleWebAPI\WebAPIClient\WebAPIClient.csproj", "{E655C96A-262E-41C8-9BB3-C6D1838DA97A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIClient", "WebAPIClient\WebAPIClient.csproj", "{E655C96A-262E-41C8-9BB3-C6D1838DA97A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
