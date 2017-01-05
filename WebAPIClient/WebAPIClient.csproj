@@ -47,6 +47,8 @@
     <Compile Include="APICalls\AgentAPI.cs" />
     <Compile Include="APICalls\JobTaskAPI.cs" />
     <Compile Include="APICalls\JobAPI.cs" />
+    <Compile Include="APICalls\OSAPI.cs" />
+    <Compile Include="APICalls\PoolAPI.cs" />
     <Compile Include="WebAPIClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

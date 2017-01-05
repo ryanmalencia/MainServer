@@ -2,6 +2,7 @@
 using System.Web.Http.Cors;
 using Newtonsoft.Json;
 using EntityWeb.Logic;
+using DataTypes;
 
 namespace ConsoleWebAPI.Controllers
 {
@@ -13,8 +14,28 @@ namespace ConsoleWebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetAllPools()
         {
-            //string temp = JsonConvert.SerializeObject(AgentInteraction.Get());
             return Ok(JsonConvert.SerializeObject(PoolLogic.GetAllPools()));
+        }
+
+        [Route("api/pool/getpoolbyname/{PoolName}")]
+        [HttpGet]
+        public IHttpActionResult GetPoolByName(string PoolName)
+        {
+            return Ok(JsonConvert.SerializeObject(PoolLogic.GetPoolByName(PoolName)));
+        }
+
+        [Route("api/pool/getpoolbyid/{id}")]
+        [HttpGet]
+        public IHttpActionResult GetPoolById(int id)
+        {
+            return Ok(JsonConvert.SerializeObject(PoolLogic.GetPoolById(id)));
+        }
+
+        [Route("api/pool/add/{Pool}")]
+        [HttpPut]
+        public void Add(Pool Pool)
+        {
+            PoolLogic.Add(Pool);
         }
     }
 }
