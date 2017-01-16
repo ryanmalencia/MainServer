@@ -33,9 +33,9 @@ namespace EntityWeb.DBInteraction
             var Job = DB.Jobs.FirstOrDefault(a => a.JobID == job.JobID);
             if(Job != null)
             {
-                job.Distributed = 1;
-                job.Finished = 0;
-                job.Last_Distributed = DateTime.Now;
+                Job.Distributed = 1;
+                Job.Finished = 0;
+                Job.Last_Distributed = DateTime.Now;
                 DB.SaveChanges();
             }
         }
@@ -58,10 +58,12 @@ namespace EntityWeb.DBInteraction
                 if(Job.Repeat == 0)
                 {
                     Job.Distributed = 1;
+                    Job.Last_Finished = DateTime.Now;
                 }
                 else
                 {
                     Job.Distributed = 0;
+                    Job.Last_Finished = DateTime.Now;
                 }
                 Job.Finished = 1;
                 DB.SaveChanges();
@@ -74,7 +76,7 @@ namespace EntityWeb.DBInteraction
             if(Job != null)
             {
                 Job.Distributed = 0;
-                job.Started = 0;
+                Job.Started = 0;
                 DB.SaveChanges();
             }
         }
