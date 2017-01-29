@@ -15,6 +15,7 @@ namespace EntityWeb.DAL
         public DbSet<Job>Jobs { get; set; }
         public DbSet<Pool>Pools { get; set; }
         public DbSet<JobTask>JobTasks { get; set; }
+        public DbSet<AppDevice>Devices { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

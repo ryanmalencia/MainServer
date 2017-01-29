@@ -195,11 +195,13 @@
     <Compile Include="Controllers\AgentController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\JobTaskController.cs" />
+    <Compile Include="Controllers\MyAppController.cs" />
     <Compile Include="Controllers\OSController.cs" />
     <Compile Include="Controllers\PoolController.cs" />
     <Compile Include="DAL\DataContext.cs" />
     <Compile Include="DAL\DataInitializer.cs" />
     <Compile Include="DBInteraction\AgentDBInteraction.cs" />
+    <Compile Include="DBInteraction\AppDBInteraction.cs" />
     <Compile Include="DBInteraction\JobDBInteraction.cs" />
     <Compile Include="DBInteraction\JobTaskDBInteraction.cs" />
     <Compile Include="DBInteraction\OSDBInteraction.cs" />
@@ -208,6 +210,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logic\AgentLogic.cs" />
+    <Compile Include="Logic\AppLogic.cs" />
     <Compile Include="Logic\JobLogic.cs" />
     <Compile Include="Logic\JobTaskLogic.cs" />
     <Compile Include="Logic\OSLogic.cs" />

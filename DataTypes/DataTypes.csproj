@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppDevice.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Agent.cs" />
     <Compile Include="AgentCollection.cs" />
