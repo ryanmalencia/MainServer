@@ -17,5 +17,12 @@ namespace EntityWeb.Controllers
         {
             AppLogic.AddNewDevice(device);
         }
+
+        [Route("api/myapp/delete/")]
+        [HttpPut]
+        public void Delete(AppDevice device)
+        {
+            AppLogic.Delete(device);
+        }
     }
 }

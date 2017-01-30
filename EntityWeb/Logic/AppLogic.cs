@@ -15,5 +15,9 @@ namespace EntityWeb.Logic
         {
             AppDB.AddNewDevice(device);
         }
+        public void Delete(AppDevice device)
+        {
+            AppDB.Delete(device);
+        }
     }
 }

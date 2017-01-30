@@ -30,5 +30,14 @@ namespace EntityWeb.DBInteraction
                 DB.SaveChanges();
             }
         }
+        public void Delete(AppDevice device)
+        {
+            var Device = DB.Devices.FirstOrDefault(a => a.RegID == device.RegID);
+            if (Device != null)
+            {
+                DB.Devices.Remove(Device);
+                DB.SaveChanges();
+            }
+        }
     }
 }
