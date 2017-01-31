@@ -9,7 +9,7 @@ namespace WebAPIClient
         /// the base string for connecting to the WebAPI
         /// </summary>
 #if DEBUG
-        static string api_string = "http://ryanlaptop/";
+        static string api_string = "http://ryanlaptop:59939/";
 #else
         static string api_string = "http://ryanlaptop/";
 #endif

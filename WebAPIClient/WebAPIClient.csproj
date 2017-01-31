@@ -49,6 +49,7 @@
     <Compile Include="APICalls\JobAPI.cs" />
     <Compile Include="APICalls\OSAPI.cs" />
     <Compile Include="APICalls\PoolAPI.cs" />
+    <Compile Include="APICalls\SportEventAPI.cs" />
     <Compile Include="WebAPIClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
