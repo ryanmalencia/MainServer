@@ -17,5 +17,12 @@ namespace EntityWeb.Controllers
         {
             SportEventLogic.Add(Event);
         }
+
+        [Route("api/sportevent/getclosestevents/")]
+        [HttpGet]
+        public IHttpActionResult GetClosestEvents()
+        {
+            return Ok(JsonConvert.SerializeObject(SportEventLogic.GetClosestEvents()));
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace DataTypes
 {
-    public class SportEvent
+    public class SportEvent : IComparable<SportEvent>
     {
         public int SportEventID { get; set; }
         public int SportID { get; set; }
@@ -20,9 +20,9 @@ namespace DataTypes
 
         }
 
-        public SportEvent(DateTime date,Sport sport = null, string opponent = "", string result = "", string location = "", string broadcast = "")
+        public SportEvent(DateTime date, Sport sport = null, string opponent = "", string result = "", string location = "", string broadcast = "")
         {
-            if(sport == null)
+            if (sport == null)
             {
                 Sport = new Sport();
             }
@@ -36,5 +36,24 @@ namespace DataTypes
             Broadcast = broadcast;
             Date = date;
         }
+
+        public int CompareTo(SportEvent other)
+        {
+            if (other != null)
+            {
+                if (Date != null && other.Date != null)
+                {
+                    return Date.CompareTo(other.Date);
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
     }
-}
+}    

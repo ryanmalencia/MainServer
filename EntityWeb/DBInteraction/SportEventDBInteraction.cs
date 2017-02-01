@@ -1,6 +1,8 @@
 ﻿using EntityWeb.DAL;
 using DataTypes;
+using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace EntityWeb.DBInteraction
 {
@@ -15,7 +17,7 @@ namespace EntityWeb.DBInteraction
 
         public void Add(SportEvent Event)
         {
-            var oldevent = DB.SportEvents.FirstOrDefault(a => a.Location == Event.Location && a.Sport.Name == Event.Sport.Name && a.Opponent == Event.Opponent && a.Date == Event.Date);
+            var oldevent = DB.SportEvents.FirstOrDefault(a => a.Location == Event.Location && a.Sport.Name == Event.Sport.Name && (a.Opponent.Contains(Event.Opponent) || Event.Opponent.Contains(a.Opponent)) && a.Date == Event.Date);
             if(oldevent == null)
             {
                 var sport = DB.Sports.FirstOrDefault(a => a.Name == Event.Sport.Name);
@@ -26,6 +28,26 @@ namespace EntityWeb.DBInteraction
                 DB.SportEvents.Add(Event);
             }
             DB.SaveChanges();
+        }
+
+        public SportEventCollection GetClosestEvents(int page = 0)
+        {
+            SportEventCollection Events = new SportEventCollection();
+
+            List<SportEvent> theevents = DB.SportEvents.Where(b=> b.Date > DateTime.Now).OrderBy(a => a.Date).ToList();
+
+            int count = 10 * page;
+
+            for(int i = count; i < count + 10; i ++)
+            {
+                if(i >= theevents.Count)
+                {
+                    break;
+                }
+                Events.AddEvent(theevents[i]);
+            }
+
+            return Events;
         }
     }
 }
