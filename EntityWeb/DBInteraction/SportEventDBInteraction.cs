@@ -30,11 +30,11 @@ namespace EntityWeb.DBInteraction
             DB.SaveChanges();
         }
 
-        public SportEventCollection GetClosestEvents(int page = 0)
+        public SportEventCollection GetFutureEvents(int page = 0)
         {
             SportEventCollection Events = new SportEventCollection();
 
-            List<SportEvent> theevents = DB.SportEvents.Where(b=> b.Date > DateTime.Now).OrderBy(a => a.Date).ToList();
+            List<SportEvent> theevents = DB.SportEvents.Where(b=> b.Date >= DateTime.Now).OrderBy(a => a.Date).ToList();
 
             int count = 10 * page;
 

@@ -18,11 +18,11 @@ namespace EntityWeb.Controllers
             SportEventLogic.Add(Event);
         }
 
-        [Route("api/sportevent/getclosestevents/")]
+        [Route("api/sportevent/getfutureevents/")]
         [HttpGet]
         public IHttpActionResult GetClosestEvents()
         {
-            return Ok(JsonConvert.SerializeObject(SportEventLogic.GetClosestEvents()));
+            return Ok(JsonConvert.SerializeObject(SportEventLogic.GetFutureEvents()));
         }
     }
 }
