@@ -24,5 +24,12 @@ namespace EntityWeb.Controllers
         {
             return Ok(JsonConvert.SerializeObject(SportEventLogic.GetFutureEvents()));
         }
+
+        [Route("api/sportevent/getfutureevents/{index}")]
+        [HttpGet]
+        public IHttpActionResult GetClosestEvents(int index)
+        {
+            return Ok(JsonConvert.SerializeObject(SportEventLogic.GetFutureEvents(index)));
+        }
     }
 }

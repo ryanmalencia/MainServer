@@ -14,9 +14,9 @@ namespace EntityWeb.Logic
         {
             SportDB.Add(Event);
         }
-        public SportEventCollection GetFutureEvents()
+        public SportEventCollection GetFutureEvents(int index = 0)
         {
-            return SportDB.GetFutureEvents();
+            return SportDB.GetFutureEvents(index);
         }
     }
 }
