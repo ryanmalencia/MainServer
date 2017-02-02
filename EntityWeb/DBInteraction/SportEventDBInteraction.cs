@@ -34,7 +34,9 @@ namespace EntityWeb.DBInteraction
         {
             SportEventCollection Events = new SportEventCollection();
 
-            List<SportEvent> theevents = DB.SportEvents.Where(b=> b.Date >= DateTime.Now).OrderBy(a => a.Date).ToList();
+            DateTime Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+
+            List<SportEvent> theevents = DB.SportEvents.Where(b=> b.Date >= Date).OrderBy(a => a.Date).ToList();
 
             int count = 10 * page;
 
