@@ -13,6 +13,7 @@ namespace DataTypes
         public DateTime Date { get; set; }
         public string ImageLoc { get; set; }
         public bool Home { get; set; }
+        public int Going { get; set; }
         public virtual Sport Sport { get; set; }
 
         public SportEvent()

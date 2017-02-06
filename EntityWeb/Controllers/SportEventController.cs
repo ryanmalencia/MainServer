@@ -31,5 +31,19 @@ namespace EntityWeb.Controllers
         {
             return Ok(JsonConvert.SerializeObject(SportEventLogic.GetFutureEvents(index)));
         }
+
+        [Route("api/sportevent/addonegoing/{id}")]
+        [HttpPut]
+        public void AddOneGoing(int id)
+        {
+            SportEventLogic.AddOneGoing(id);
+        }
+
+        [Route("api/sportevent/minusonegoing/{id}")]
+        [HttpPut]
+        public void MinusOneGoing(int id)
+        {
+            SportEventLogic.MinusOneGoing(id);
+        }
     }
 }

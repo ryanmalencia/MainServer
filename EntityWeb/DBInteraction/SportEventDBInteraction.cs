@@ -51,5 +51,29 @@ namespace EntityWeb.DBInteraction
 
             return Events;
         }
+
+        public void AddOneGoing(int id)
+        {
+            var Event = DB.SportEvents.FirstOrDefault(a => a.SportEventID == id);
+
+            if(Event != null)
+            {
+                Event.Going++;
+            }
+
+            DB.SaveChanges();
+        }
+
+        public void MinusOneGoing(int id)
+        {
+            var Event = DB.SportEvents.FirstOrDefault(a => a.SportEventID == id);
+
+            if (Event != null)
+            {
+                Event.Going--;
+            }
+
+            DB.SaveChanges();
+        }
     }
 }
