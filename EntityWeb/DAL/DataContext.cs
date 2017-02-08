@@ -18,6 +18,7 @@ namespace EntityWeb.DAL
         public DbSet<AppDevice>Devices { get; set; }
         public DbSet<Sport>Sports { get; set; }
         public DbSet<SportEvent>SportEvents { get; set; }
+        public DbSet<User>Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

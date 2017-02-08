@@ -6,20 +6,18 @@ using System.Threading.Tasks;
 
 namespace DataTypes
 {
-    public class AppDevice
+    public class User
     {
-        public int AppDeviceID { get; set; }
-        public string RegID { get; set; }
+        public int UserID { get; set; }
         public string GoogID { get; set; }
 
-        public AppDevice()
+        public User()
         {
 
         }
 
-        public AppDevice(string RegID, string GoogID = "")
+        public User(string GoogID)
         {
-            this.RegID = RegID;
             this.GoogID = GoogID;
         }
     }
