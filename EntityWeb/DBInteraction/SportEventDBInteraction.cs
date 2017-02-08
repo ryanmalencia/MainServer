@@ -59,9 +59,8 @@ namespace EntityWeb.DBInteraction
             if(Event != null)
             {
                 Event.Going++;
+                DB.SaveChanges();
             }
-
-            DB.SaveChanges();
         }
 
         public void MinusOneGoing(int id)
@@ -70,10 +69,12 @@ namespace EntityWeb.DBInteraction
 
             if (Event != null)
             {
-                Event.Going--;
+                if (Event.Going > 0)
+                {
+                    Event.Going--;
+                    DB.SaveChanges();
+                }
             }
-
-            DB.SaveChanges();
         }
     }
 }
