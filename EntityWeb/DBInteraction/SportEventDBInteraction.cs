@@ -52,21 +52,32 @@ namespace EntityWeb.DBInteraction
             return Events;
         }
 
-        public void AddOneGoing(int id)
+        public void AddOneGoing(int id, int user)
         {
             var Event = DB.SportEvents.FirstOrDefault(a => a.SportEventID == id);
-
+            var Attend = DB.SportEventAttendees.FirstOrDefault(a => a.SportEventID == id && a.UserID == user);
             if(Event != null)
             {
                 Event.Going++;
                 DB.SaveChanges();
             }
+
+            if(Attend == null)
+            {
+                DB.SportEventAttendees.Add(new SportEventAttend(id, user,true));
+                DB.SaveChanges();
+            }
+            else
+            {
+                Attend.Going = true;
+                DB.SaveChanges();
+            }
         }
 
-        public void MinusOneGoing(int id)
+        public void MinusOneGoing(int id, int user)
         {
             var Event = DB.SportEvents.FirstOrDefault(a => a.SportEventID == id);
-
+            var Attend = DB.SportEventAttendees.FirstOrDefault(a => a.SportEventID == id && a.UserID == user);
             if (Event != null)
             {
                 if (Event.Going > 0)
@@ -74,6 +85,25 @@ namespace EntityWeb.DBInteraction
                     Event.Going--;
                     DB.SaveChanges();
                 }
+            }
+            if (Attend != null)
+            {
+                Attend.Going = false;
+                DB.SaveChanges();
+            }
+        }
+
+        public SportEventAttend GetAttendStatus(int id, int user)
+        {
+            var Attend = DB.SportEventAttendees.FirstOrDefault(a => a.SportEventID == id && a.UserID == user);
+
+            if(Attend != null)
+            {
+                return Attend;
+            }
+            else
+            {
+                return new SportEventAttend(Going:false);
             }
         }
     }

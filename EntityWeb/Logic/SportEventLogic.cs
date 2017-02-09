@@ -19,14 +19,19 @@ namespace EntityWeb.Logic
             return SportDB.GetFutureEvents(index);
         }
 
-        public void AddOneGoing(int id)
+        public void AddOneGoing(int id, int user)
         {
-            SportDB.AddOneGoing(id);
+            SportDB.AddOneGoing(id, user);
         }
 
-        public void MinusOneGoing(int id)
+        public void MinusOneGoing(int id, int user)
         {
-            SportDB.MinusOneGoing(id);
+            SportDB.MinusOneGoing(id, user);
+        }
+
+        public SportEventAttend GetAttendStatus(int id, int user)
+        {
+            return SportDB.GetAttendStatus(id, user);
         }
     }
 }

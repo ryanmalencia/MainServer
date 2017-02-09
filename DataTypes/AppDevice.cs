@@ -10,17 +10,16 @@ namespace DataTypes
     {
         public int AppDeviceID { get; set; }
         public string RegID { get; set; }
-        public string GoogID { get; set; }
+        public int UserID { get; set; }
 
         public AppDevice()
         {
 
         }
-
-        public AppDevice(string RegID, string GoogID = "")
+        public AppDevice(string RegID, int UserID = 0)
         {
             this.RegID = RegID;
-            this.GoogID = GoogID;
+            this.UserID = UserID;
         }
     }
 }
