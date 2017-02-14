@@ -191,6 +191,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ConcertController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AgentController.cs" />
     <Compile Include="Controllers\JobController.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="DAL\DataInitializer.cs" />
     <Compile Include="DBInteraction\AgentDBInteraction.cs" />
     <Compile Include="DBInteraction\AppDBInteraction.cs" />
+    <Compile Include="DBInteraction\ConcertDBInteraction.cs" />
     <Compile Include="DBInteraction\JobDBInteraction.cs" />
     <Compile Include="DBInteraction\JobTaskDBInteraction.cs" />
     <Compile Include="DBInteraction\OSDBInteraction.cs" />
@@ -215,6 +217,7 @@
     </Compile>
     <Compile Include="Logic\AgentLogic.cs" />
     <Compile Include="Logic\AppLogic.cs" />
+    <Compile Include="Logic\ConcertLogic.cs" />
     <Compile Include="Logic\JobLogic.cs" />
     <Compile Include="Logic\JobTaskLogic.cs" />
     <Compile Include="Logic\OSLogic.cs" />
