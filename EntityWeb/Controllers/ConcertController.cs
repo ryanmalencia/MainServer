@@ -16,5 +16,19 @@ namespace ConsoleWebAPI.Controllers
         {
             ConcertLogic.Add(concert);
         }
+
+        [Route("api/concert/getfutureconcerts/")]
+        [HttpGet]
+        public IHttpActionResult GetFutureConcerts()
+        {
+            return Ok(JsonConvert.SerializeObject(ConcertLogic.GetFutureConcerts()));
+        }
+
+        [Route("api/concert/getfutureconcerts/{index}")]
+        [HttpGet]
+        public IHttpActionResult GetFutureConcerts(int index)
+        {
+            return Ok(JsonConvert.SerializeObject(ConcertLogic.GetFutureConcerts(index)));
+        }
     }
 }

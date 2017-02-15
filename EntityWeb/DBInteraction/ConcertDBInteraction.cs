@@ -1,5 +1,7 @@
 ﻿using EntityWeb.DAL;
 using DataTypes;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EntityWeb.DBInteraction
@@ -20,6 +22,23 @@ namespace EntityWeb.DBInteraction
                 DB.Concerts.Add(concert);
                 DB.SaveChanges();
             }
+        }
+
+        public ConcertCollection GetFutureConcerts(int page = 0)
+        {
+            ConcertCollection Concerts = new ConcertCollection();
+            DateTime Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            List<Concert> concerts = DB.Concerts.Where(b => b.Date >= Date).OrderBy(a => a.Date).ToList();
+            int count = 15 * page;
+            for (int i = count; i < count + 15; i++)
+            {
+                if (i >= concerts.Count)
+                {
+                    break;
+                }
+                Concerts.AddConcert(concerts[i]);
+            }
+            return Concerts;
         }
     }
 }

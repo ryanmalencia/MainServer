@@ -10,5 +10,9 @@ namespace EntityWeb.Logic
         {
             ConcertDB.Add(concert);
         }
+        public ConcertCollection GetFutureConcerts(int index = 0)
+        {
+            return ConcertDB.GetFutureConcerts(index);
+        }
     }
 }

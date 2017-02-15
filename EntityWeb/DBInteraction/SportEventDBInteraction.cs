@@ -38,9 +38,9 @@ namespace EntityWeb.DBInteraction
 
             List<SportEvent> theevents = DB.SportEvents.Where(b=> b.Date >= Date).OrderBy(a => a.Date).ToList();
 
-            int count = 20 * page;
+            int count = 15 * page;
 
-            for(int i = count; i < count + 20; i ++)
+            for(int i = count; i < count + 15; i ++)
             {
                 if(i >= theevents.Count)
                 {
