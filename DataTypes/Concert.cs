@@ -10,6 +10,7 @@ namespace DataTypes
         public string ImageLink { get; set; }
         public string TicketLink { get; set; }
         public DateTime Date { get; set; }
+        public int Going { get; set; }
 
         public Concert()
         {

@@ -30,5 +30,26 @@ namespace ConsoleWebAPI.Controllers
         {
             return Ok(JsonConvert.SerializeObject(ConcertLogic.GetFutureConcerts(index)));
         }
+
+        [Route("api/concert/addonegoing/{id}/{user}")]
+        [HttpPut]
+        public void AddOneGoing(int id, int user)
+        {
+            ConcertLogic.AddOneGoing(id, user);
+        }
+
+        [Route("api/concert/minusonegoing/{id}/{user}")]
+        [HttpPut]
+        public void MinusOneGoing(int id, int user)
+        {
+            ConcertLogic.MinusOneGoing(id, user);
+        }
+
+        [Route("api/concert/getattendstatus/{id}/{user}")]
+        [HttpGet]
+        public IHttpActionResult GetAttendStatus(int id, int user)
+        {
+            return Ok(JsonConvert.SerializeObject(ConcertLogic.GetAttendStatus(id, user)));
+        }
     }
 }

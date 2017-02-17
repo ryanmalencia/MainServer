@@ -21,6 +21,7 @@ namespace EntityWeb.DAL
         public DbSet<User>Users { get; set; }
         public DbSet<SportEventAttend>SportEventAttendees { get; set; }
         public DbSet<Concert>Concerts { get; set; }
+        public DbSet<ConcertAttend> ConcertAttendees { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

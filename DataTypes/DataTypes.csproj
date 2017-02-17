@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AppDevice.cs" />
     <Compile Include="Concert.cs" />
+    <Compile Include="ConcertAttend.cs" />
     <Compile Include="ConcertCollection.cs" />
     <Compile Include="SportEventAttend.cs" />
     <Compile Include="Job.cs" />
