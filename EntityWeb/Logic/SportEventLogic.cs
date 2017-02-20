@@ -19,6 +19,10 @@ namespace EntityWeb.Logic
             return SportDB.GetFutureEvents(index);
         }
 
+        public SportEventCollection GetFutureUserEvents(int UserID, int index = 0)
+        {
+            return SportDB.GetFutureUserEvents(UserID, index);
+        }
         public void AddOneGoing(int id, int user)
         {
             SportDB.AddOneGoing(id, user);

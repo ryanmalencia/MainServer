@@ -14,6 +14,7 @@ namespace DataTypes
         public string ImageLoc { get; set; }
         public bool Home { get; set; }
         public int Going { get; set; }
+        public bool UserGoing { get; set; }
         public virtual Sport Sport { get; set; }
 
         public SportEvent()
@@ -21,7 +22,7 @@ namespace DataTypes
 
         }
 
-        public SportEvent(DateTime date, Sport sport = null, string opponent = "", string result = "", string location = "", string broadcast = "", string imageloc = "",bool home = true)
+        public SportEvent(DateTime date, Sport sport = null, string opponent = "", string result = "", string location = "", string broadcast = "", string imageloc = "",bool home = true, bool usergoing = false)
         {
             if (sport == null)
             {
@@ -38,6 +39,7 @@ namespace DataTypes
             Date = date;
             ImageLoc = imageloc;
             Home = home;
+            UserGoing = usergoing;
         }
 
         public int CompareTo(SportEvent other)

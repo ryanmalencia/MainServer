@@ -32,6 +32,13 @@ namespace EntityWeb.Controllers
             return Ok(JsonConvert.SerializeObject(SportEventLogic.GetFutureEvents(index)));
         }
 
+        [Route("api/sportevent/getfutureuserevents/{UserID}/{index}")]
+        [HttpGet]
+        public IHttpActionResult GetFutureUserEvents(int UserID, int index)
+        {
+            return Ok(JsonConvert.SerializeObject(SportEventLogic.GetFutureUserEvents(UserID,index)));
+        }
+
         [Route("api/sportevent/addonegoing/{id}/{user}")]
         [HttpPut]
         public void AddOneGoing(int id, int user)

@@ -15,6 +15,11 @@ namespace EntityWeb.Logic
             return ConcertDB.GetFutureConcerts(index);
         }
 
+        public ConcertCollection GetFutureUserConcerts(int UserID, int index = 0)
+        {
+            return ConcertDB.GetFutureUserConcerts(UserID,index);
+        }
+
         public void AddOneGoing(int id, int user)
         {
             ConcertDB.AddOneGoing(id, user);

@@ -31,6 +31,13 @@ namespace ConsoleWebAPI.Controllers
             return Ok(JsonConvert.SerializeObject(ConcertLogic.GetFutureConcerts(index)));
         }
 
+        [Route("api/concert/getfutureuserconcerts/{UserID}/{index}")]
+        [HttpGet]
+        public IHttpActionResult GetFutureUserConcerts(int UserID, int index)
+        {
+            return Ok(JsonConvert.SerializeObject(ConcertLogic.GetFutureUserConcerts(UserID, index)));
+        }
+
         [Route("api/concert/addonegoing/{id}/{user}")]
         [HttpPut]
         public void AddOneGoing(int id, int user)

@@ -51,6 +51,44 @@ namespace EntityWeb.DBInteraction
 
             return Events;
         }
+        public SportEventCollection GetFutureUserEvents(int UserID,int page = 0)
+        {
+            SportEventCollection Events = new SportEventCollection();
+
+            DateTime Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+
+            List<SportEvent> theevents = DB.SportEvents.Where(b => b.Date >= Date).OrderBy(a => a.Date).ToList();
+
+            int count = 15 * page;
+
+            for (int i = count; i < count + 15; i++)
+            {
+                if (i >= theevents.Count)
+                {
+                    break;
+                }
+                int ID = theevents[i].SportEventID;
+                var going = DB.SportEventAttendees.FirstOrDefault(a => a.SportEventID == ID && a.UserID == UserID);
+                if(going != null)
+                {
+                    if(going.Going)
+                    {
+                        theevents[i].UserGoing = going.Going;
+                    }
+                }
+                if (theevents[i].Home || theevents[i].Broadcast.Trim().Length > 0)
+                {
+                    Events.AddEvent(theevents[i]);
+                }
+                else
+                {
+                    count++;
+                }
+            }
+
+            return Events;
+        }
+
 
         public void AddOneGoing(int id, int user)
         {

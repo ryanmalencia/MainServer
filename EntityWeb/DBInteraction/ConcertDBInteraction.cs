@@ -41,6 +41,32 @@ namespace EntityWeb.DBInteraction
             return Concerts;
         }
 
+        public ConcertCollection GetFutureUserConcerts(int UserID,int page = 0)
+        {
+            ConcertCollection Concerts = new ConcertCollection();
+            DateTime Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            List<Concert> concerts = DB.Concerts.Where(b => b.Date >= Date).OrderBy(a => a.Date).ToList();
+            int count = 15 * page;
+            for (int i = count; i < count + 15; i++)
+            {
+                if (i >= concerts.Count)
+                {
+                    break;
+                }
+                int ID = concerts[i].ConcertID;
+                var going = DB.ConcertAttendees.FirstOrDefault(a => a.ConcertID == ID && a.UserID == UserID);
+                if (going != null)
+                {
+                    if (going.Going)
+                    {
+                        concerts[i].UserGoing = going.Going;
+                    }
+                }
+                Concerts.AddConcert(concerts[i]);
+            }
+            return Concerts;
+        }
+
         public void AddOneGoing(int id, int user)
         {
             var Event = DB.Concerts.FirstOrDefault(a => a.ConcertID == id);
