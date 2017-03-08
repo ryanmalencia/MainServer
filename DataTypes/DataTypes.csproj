@@ -44,6 +44,7 @@
     <Compile Include="Concert.cs" />
     <Compile Include="ConcertAttend.cs" />
     <Compile Include="ConcertCollection.cs" />
+    <Compile Include="PrintCollection.cs" />
     <Compile Include="SportEventAttend.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Agent.cs" />

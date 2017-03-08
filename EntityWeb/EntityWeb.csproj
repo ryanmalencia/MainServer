@@ -199,6 +199,7 @@
     <Compile Include="Controllers\MyAppController.cs" />
     <Compile Include="Controllers\OSController.cs" />
     <Compile Include="Controllers\PoolController.cs" />
+    <Compile Include="Controllers\PrintController.cs" />
     <Compile Include="Controllers\SportEventController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\DataContext.cs" />
@@ -210,6 +211,7 @@
     <Compile Include="DBInteraction\JobTaskDBInteraction.cs" />
     <Compile Include="DBInteraction\OSDBInteraction.cs" />
     <Compile Include="DBInteraction\PoolDBInteraction.cs" />
+    <Compile Include="DBInteraction\PrintDBInteraction.cs" />
     <Compile Include="DBInteraction\SportEventDBInteraction.cs" />
     <Compile Include="DBInteraction\UserDBInteraction.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,6 +224,7 @@
     <Compile Include="Logic\JobTaskLogic.cs" />
     <Compile Include="Logic\OSLogic.cs" />
     <Compile Include="Logic\PoolLogic.cs" />
+    <Compile Include="Logic\PrintLogic.cs" />
     <Compile Include="Logic\SportEventLogic.cs" />
     <Compile Include="Logic\UserLogic.cs" />
     <Compile Include="SignalR\AgentInfo.cs" />
@@ -234,6 +237,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Files\printloc.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
