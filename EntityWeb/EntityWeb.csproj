@@ -196,6 +196,7 @@
     <Compile Include="Controllers\AgentController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\JobTaskController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\MyAppController.cs" />
     <Compile Include="Controllers\OSController.cs" />
     <Compile Include="Controllers\PoolController.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="DBInteraction\ConcertDBInteraction.cs" />
     <Compile Include="DBInteraction\JobDBInteraction.cs" />
     <Compile Include="DBInteraction\JobTaskDBInteraction.cs" />
+    <Compile Include="DBInteraction\LocationDBInteraction.cs" />
     <Compile Include="DBInteraction\OSDBInteraction.cs" />
     <Compile Include="DBInteraction\PoolDBInteraction.cs" />
     <Compile Include="DBInteraction\PrintDBInteraction.cs" />
@@ -222,6 +224,7 @@
     <Compile Include="Logic\ConcertLogic.cs" />
     <Compile Include="Logic\JobLogic.cs" />
     <Compile Include="Logic\JobTaskLogic.cs" />
+    <Compile Include="Logic\LocationLogic.cs" />
     <Compile Include="Logic\OSLogic.cs" />
     <Compile Include="Logic\PoolLogic.cs" />
     <Compile Include="Logic\PrintLogic.cs" />
