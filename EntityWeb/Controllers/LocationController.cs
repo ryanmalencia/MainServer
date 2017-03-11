@@ -16,5 +16,12 @@ namespace ConsoleWebAPI.Controllers
         {
             return Ok(JsonConvert.SerializeObject(LocationLogic.GetPrintLocations()));
         }
+
+        [Route("api/location/addprintlocation")]
+        [HttpPut]
+        public void AddPrintLocations(PrintLocation location)
+        {
+            LocationLogic.AddPrintLocation(location);
+        }
     }
 }

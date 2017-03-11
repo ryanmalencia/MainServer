@@ -41,12 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDevice.cs" />
+    <Compile Include="CampusEvent.cs" />
+    <Compile Include="CampusEventCollection.cs" />
+    <Compile Include="CampusEventType.cs" />
     <Compile Include="Concert.cs" />
     <Compile Include="ConcertAttend.cs" />
     <Compile Include="ConcertCollection.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="LocationCollection.cs" />
     <Compile Include="PrintCollection.cs" />
+    <Compile Include="PrintLocation.cs" />
     <Compile Include="SportEventAttend.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Agent.cs" />

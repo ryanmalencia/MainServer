@@ -16,11 +16,22 @@ namespace EntityWeb.DBInteraction
         public LocationCollection GetPrintLocations()
         {
             LocationCollection Locations = new LocationCollection();
-            foreach (Location location in DB.PrintLocations)
+            foreach (PrintLocation location in DB.PrintLocations)
             {
                 Locations.AddLocation(location);
             }
             return Locations;
+        }
+
+        public void AddPrintLocation(PrintLocation location)
+        {
+            var loc = DB.PrintLocations.FirstOrDefault(a => a.Latitude == location.Latitude && a.Longitude == location.Longitude && a.Name == location.Name);
+
+            if(loc == null)
+            {
+                DB.PrintLocations.Add(location);
+                DB.SaveChanges();
+            }
         }
     }
 }

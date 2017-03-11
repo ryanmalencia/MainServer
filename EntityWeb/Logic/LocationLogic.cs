@@ -1,6 +1,5 @@
 ﻿using EntityWeb.DBInteraction;
 using DataTypes;
-using SignalR.AgentTicker;
 
 namespace EntityWeb.Logic
 {
@@ -11,6 +10,11 @@ namespace EntityWeb.Logic
         public LocationCollection GetPrintLocations()
         {
             return LocationDB.GetPrintLocations();
+        }
+
+        public void AddPrintLocation(PrintLocation location)
+        {
+            LocationDB.AddPrintLocation(location);
         }
     }
 }

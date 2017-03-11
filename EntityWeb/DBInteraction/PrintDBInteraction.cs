@@ -10,9 +10,7 @@ namespace EntityWeb.DBInteraction
         public PrintCollection GetAllPrintLocations()
         {
             PrintCollection locations = new PrintCollection();
-
-            locations.Locations = File.ReadAllLines(@"..\Files\printloc.txt").ToList();
-
+            locations.Locations = File.ReadAllLines(@"C:\AppFiles\printloc.txt").ToList();
             return locations;
         }
     }

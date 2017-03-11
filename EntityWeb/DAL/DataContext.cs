@@ -22,7 +22,8 @@ namespace EntityWeb.DAL
         public DbSet<SportEventAttend>SportEventAttendees { get; set; }
         public DbSet<Concert>Concerts { get; set; }
         public DbSet<ConcertAttend> ConcertAttendees { get; set; }
-        public DbSet<Location> PrintLocations { get; set; }
+        public DbSet<PrintLocation> PrintLocations { get; set; }
+        public DbSet<CampusEvent> CampusEvents { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
