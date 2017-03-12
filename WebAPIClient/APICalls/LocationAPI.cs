@@ -10,5 +10,12 @@ namespace WebAPIClient.APICalls
             string method = "PUT";
             WebAPIClient.SendResponseJson(http,location, method);
         }
+
+        public static void AddDiningLocation(DiningLocation location)
+        {
+            string http = "api/location/adddininglocation";
+            string method = "PUT";
+            WebAPIClient.SendResponseJson(http, location, method);
+        }
     }
 }

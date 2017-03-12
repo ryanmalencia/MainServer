@@ -1,6 +1,7 @@
 ﻿using EntityWeb.DAL;
 using DataTypes;
 using System.Linq;
+using System.IO;
 
 namespace EntityWeb.DBInteraction
 {
@@ -23,6 +24,20 @@ namespace EntityWeb.DBInteraction
             return Locations;
         }
 
+        public PrintCollection GetDiningLocations()
+        {
+            PrintCollection Locations = new PrintCollection();
+            Locations.Locations = File.ReadAllLines(@"C:\AppFiles\fooddata.txt").ToList();
+            return Locations;
+        }
+
+        public DiningLocationCollection GetDiningCoords()
+        {
+            DiningLocationCollection Locations = new DiningLocationCollection();
+            Locations.Locations = DB.DiningLocations.ToList();
+            return Locations;
+        }
+
         public void AddPrintLocation(PrintLocation location)
         {
             var loc = DB.PrintLocations.FirstOrDefault(a => a.Latitude == location.Latitude && a.Longitude == location.Longitude && a.Name == location.Name);
@@ -30,6 +45,17 @@ namespace EntityWeb.DBInteraction
             if(loc == null)
             {
                 DB.PrintLocations.Add(location);
+                DB.SaveChanges();
+            }
+        }
+
+        public void AddDiningLocations(DiningLocation location)
+        {
+            var loc = DB.DiningLocations.FirstOrDefault(a => a.Latitude == location.Latitude && a.Longitude == location.Longitude);
+
+            if (loc == null)
+            {
+                DB.DiningLocations.Add(location);
                 DB.SaveChanges();
             }
         }

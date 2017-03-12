@@ -23,5 +23,26 @@ namespace ConsoleWebAPI.Controllers
         {
             LocationLogic.AddPrintLocation(location);
         }
+
+        [Route("api/location/getdininglocations")]
+        [HttpGet]
+        public IHttpActionResult GetDiningLocations()
+        {
+            return Ok(JsonConvert.SerializeObject(LocationLogic.GetDiningLocations()));
+        }
+
+        [Route("api/location/getdiningcoords")]
+        [HttpGet]
+        public IHttpActionResult GetDiningCoords()
+        {
+            return Ok(JsonConvert.SerializeObject(LocationLogic.GetDiningCoords()));
+        }
+
+        [Route("api/location/adddininglocation")]
+        [HttpPut]
+        public void AddDiningLocations(DiningLocation location)
+        {
+            LocationLogic.AddDiningLocations(location);
+        }
     }
 }

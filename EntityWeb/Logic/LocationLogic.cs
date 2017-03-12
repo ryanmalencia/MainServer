@@ -12,9 +12,24 @@ namespace EntityWeb.Logic
             return LocationDB.GetPrintLocations();
         }
 
+        public PrintCollection GetDiningLocations()
+        {
+            return LocationDB.GetDiningLocations();
+        }
+
         public void AddPrintLocation(PrintLocation location)
         {
             LocationDB.AddPrintLocation(location);
+        }
+
+        public void AddDiningLocations(DiningLocation location)
+        {
+            LocationDB.AddDiningLocations(location);
+        }
+        
+        public DiningLocationCollection GetDiningCoords()
+        {
+            return LocationDB.GetDiningCoords();
         }
     }
 }

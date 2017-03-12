@@ -47,6 +47,8 @@
     <Compile Include="Concert.cs" />
     <Compile Include="ConcertAttend.cs" />
     <Compile Include="ConcertCollection.cs" />
+    <Compile Include="DiningLocation.cs" />
+    <Compile Include="DiningLocationCollection.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="LocationCollection.cs" />
     <Compile Include="PrintCollection.cs" />
