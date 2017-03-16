@@ -17,5 +17,25 @@ namespace WebAPIClient.APICalls
             string method = "PUT";
             WebAPIClient.SendResponseJson(http, location, method);
         }
+
+        public static void AddFitnessLocation(FitnessLocation location)
+        {
+            string http = "api/location/addfitnesslocation";
+            string method = "PUT";
+            WebAPIClient.SendResponseJson(http, location, method);
+        }
+        public static void AddLibraryLocation(LibraryLocation location)
+        {
+            string http = "api/location/addlibrarylocation";
+            string method = "PUT";
+            WebAPIClient.SendResponseJson(http, location, method);
+        }
+
+        public static void AddComputerLocation(ComputerLocation location)
+        {
+            string http = "api/location/addcomputerlocation";
+            string method = "PUT";
+            WebAPIClient.SendResponseJson(http, location, method);
+        }
     }
 }

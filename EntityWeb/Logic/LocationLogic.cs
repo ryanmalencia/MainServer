@@ -31,5 +31,50 @@ namespace EntityWeb.Logic
         {
             return LocationDB.GetDiningCoords();
         }
+
+        public void AddFitnessLocations(FitnessLocation location)
+        {
+            LocationDB.AddFitnessLocations(location);
+        }
+
+        public LocationCollection GetFitnessCoords()
+        {
+            return LocationDB.GetFitnessCoords();
+        }
+
+        public PrintCollection GetFitnessLocations()
+        {
+            return LocationDB.GetFitnessLocations();
+        }
+
+        public void AddLibraryLocations(LibraryLocation location)
+        {
+            LocationDB.AddLibraryLocations(location);
+        }
+
+        public LocationCollection GetLibraryCoords()
+        {
+            return LocationDB.GetLibraryCoords();
+        }
+
+        public PrintCollection GetLibraryLocations()
+        {
+            return LocationDB.GetLibraryLocations();
+        }
+
+        public void AddComputerLocations(ComputerLocation location)
+        {
+            LocationDB.AddComputerLocations(location);
+        }
+
+        public LocationCollection GetComputerCoords()
+        {
+            return LocationDB.GetComputerCoords();
+        }
+
+        public PrintCollection GetComputerLocations()
+        {
+            return LocationDB.GetComputerLocations();
+        }
     }
 }

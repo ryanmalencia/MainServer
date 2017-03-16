@@ -25,6 +25,9 @@ namespace EntityWeb.DAL
         public DbSet<PrintLocation> PrintLocations { get; set; }
         public DbSet<CampusEvent> CampusEvents { get; set; }
         public DbSet<DiningLocation> DiningLocations { get; set; }
+        public DbSet<FitnessLocation> FitnessLocations { get; set; }
+        public DbSet<LibraryLocation> LibraryLocations { get; set; }
+        public DbSet<ComputerLocation> ComputerLocations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

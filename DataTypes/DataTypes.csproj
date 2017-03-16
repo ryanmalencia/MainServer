@@ -44,11 +44,14 @@
     <Compile Include="CampusEvent.cs" />
     <Compile Include="CampusEventCollection.cs" />
     <Compile Include="CampusEventType.cs" />
+    <Compile Include="ComputerLocation.cs" />
     <Compile Include="Concert.cs" />
     <Compile Include="ConcertAttend.cs" />
     <Compile Include="ConcertCollection.cs" />
     <Compile Include="DiningLocation.cs" />
     <Compile Include="DiningLocationCollection.cs" />
+    <Compile Include="FitnessLocation.cs" />
+    <Compile Include="LibraryLocation.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="LocationCollection.cs" />
     <Compile Include="PrintCollection.cs" />
