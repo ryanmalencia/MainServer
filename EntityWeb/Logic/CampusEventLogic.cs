@@ -11,5 +11,10 @@ namespace EntityWeb.Logic
         {
             return EventDB.GetEventsByType(type);
         }
+
+        public void AddEvent(CampusEvent Event)
+        {
+            EventDB.AddEvent(Event);
+        }
     }
 }

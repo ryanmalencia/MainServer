@@ -16,5 +16,12 @@ namespace ConsoleWebAPI.Controllers
         {
             return Ok(JsonConvert.SerializeObject(CampusEventLogic.GetEventsByType(type)));
         }
+
+        [Route("api/campusevent/addevent")]
+        [HttpPut]
+        public void AddEvent(CampusEvent Event)
+        {
+            CampusEventLogic.AddEvent(Event);
+        }
     }
 }

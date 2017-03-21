@@ -24,5 +24,24 @@ namespace EntityWeb.DBInteraction
 
             return Events;
         }
+
+        public void AddEvent(CampusEvent Event)
+        {
+            var temp = DB.CampusEvents.FirstOrDefault(a => a.Date == Event.Date && a.Location == Event.Location && a.Title == Event.Title && a.Time == Event.Time);
+
+            if(temp == null)
+            {
+                var temp2 = DB.CampusEventTypes.FirstOrDefault(a => a.Type == Event.Type.Type);
+                if(temp2 != null)
+                {
+                    Event.Type = temp2;
+                }
+                if (Event.Type.Type.ToLower() != "practice")
+                {
+                    DB.CampusEvents.Add(Event);
+                    DB.SaveChanges();
+                }
+            }
+        }
     }
 }
