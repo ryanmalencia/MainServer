@@ -16,5 +16,10 @@ namespace EntityWeb.Logic
         {
             EventDB.AddEvent(Event);
         }
+
+        public CampusEventCollection GetFutureEvents(string type, int index = 0)
+        {
+            return EventDB.GetFutureEvents(type, index);
+        }
     }
 }

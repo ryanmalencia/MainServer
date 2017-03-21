@@ -23,5 +23,12 @@ namespace ConsoleWebAPI.Controllers
         {
             CampusEventLogic.AddEvent(Event);
         }
+
+        [Route("api/campusevent/getfutureevents/{index}/{type}")]
+        [HttpGet]
+        public IHttpActionResult GetFutureEvents(int index, string type)
+        {
+            return Ok(JsonConvert.SerializeObject(CampusEventLogic.GetFutureEvents(type,index)));
+        }
     }
 }
