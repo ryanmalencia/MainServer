@@ -21,5 +21,19 @@ namespace EntityWeb.Logic
         {
             return EventDB.GetFutureEvents(type, index);
         }
+        public CampusEventCollection GetAllEvents()
+        {
+            return EventDB.GetAllEvents();
+        }
+
+        public void UpdateEventDate(CampusEvent Event)
+        {
+            EventDB.UpdateEventDate(Event);
+        }
+
+        public CampusEventCollection GetNextHourEvents(string type)
+        {
+            return EventDB.GetNextHourEvents(type);
+        }
     }
 }

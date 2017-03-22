@@ -24,11 +24,32 @@ namespace ConsoleWebAPI.Controllers
             CampusEventLogic.AddEvent(Event);
         }
 
-        [Route("api/campusevent/getfutureevents/{index}/{type}")]
+        [Route("api/campusevent/getfutureevents/{type}/{index}")]
         [HttpGet]
-        public IHttpActionResult GetFutureEvents(int index, string type)
+        public IHttpActionResult GetFutureEvents(string type,int index)
         {
             return Ok(JsonConvert.SerializeObject(CampusEventLogic.GetFutureEvents(type,index)));
+        }
+
+        [Route("api/campusevent/getallevents")]
+        [HttpGet]
+        public IHttpActionResult GetAllEvents()
+        {
+            return Ok(JsonConvert.SerializeObject(CampusEventLogic.GetAllEvents()));
+        }
+
+        [Route("api/campusevent/updateeventdate")]
+        [HttpPut]
+        public void UpdateEventDate(CampusEvent Event)
+        {
+            CampusEventLogic.UpdateEventDate(Event);
+        }
+
+        [Route("api/campusevent/getnexthourevents/{type}")]
+        [HttpGet]
+        public IHttpActionResult GetNextHourEvents(string type)
+        {
+            return Ok(JsonConvert.SerializeObject(CampusEventLogic.GetNextHourEvents(type)));
         }
     }
 }

@@ -66,6 +66,37 @@ namespace EntityWeb.DBInteraction
             }
 
             return Events;
-        }            
+        }
+        
+        public CampusEventCollection GetAllEvents()
+        {
+            CampusEventCollection Events = new CampusEventCollection();
+
+            Events.Events = DB.CampusEvents.ToList();
+
+            return Events;
+        }
+        
+        public void UpdateEventDate(CampusEvent Event)
+        {
+            var OldEvent = DB.CampusEvents.FirstOrDefault(a => a.CampusEventID == Event.CampusEventID);
+
+            if(OldEvent != null)
+            {
+                OldEvent.Date = Event.Date;
+                DB.SaveChanges();
+            }
+        }
+
+        public CampusEventCollection GetNextHourEvents(string type)
+        {
+            CampusEventCollection Events = new CampusEventCollection();
+
+            DateTime date = DateTime.Now;
+
+            Events.Events = DB.CampusEvents.Where(a => a.Date.Year == date.Year && (a.Date.Hour - date.Hour) == 1 && (a.Date.Minute - date.Minute) < 10 && a.Type.Type == type).ToList();
+
+            return Events;
+        }
     }
 }
