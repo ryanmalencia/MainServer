@@ -1,5 +1,6 @@
 ﻿using DataTypes;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace WebAPIClient.APICalls
 {
@@ -35,6 +36,15 @@ namespace WebAPIClient.APICalls
             string theobject = WebAPIClient.GetResponseJson(http, null, method);
             object collection = JsonConvert.DeserializeObject<CampusEventCollection>(theobject);
             return (CampusEventCollection)collection;
+        }
+
+        public static List<string> GetCampusEventTypes()
+        {
+            string http = "api/campusevent/getcampuseventtypes";
+            string method = "GET";
+            string theobject = WebAPIClient.GetResponseJson(http, null, method);
+            object collection = JsonConvert.DeserializeObject<List<string>>(theobject);
+            return (List<string>)collection;
         }
     }
 }

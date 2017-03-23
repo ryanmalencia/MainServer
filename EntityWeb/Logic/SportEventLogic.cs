@@ -1,5 +1,6 @@
 ﻿using EntityWeb.DBInteraction;
 using DataTypes;
+using System.Collections.Generic;
 
 namespace EntityWeb.Logic
 {
@@ -36,6 +37,16 @@ namespace EntityWeb.Logic
         public SportEventAttend GetAttendStatus(int id, int user)
         {
             return SportDB.GetAttendStatus(id, user);
+        }
+
+        public SportEventCollection GetNextHourEvents(string type)
+        {
+            return SportDB.GetNextHourEvents(type);
+        }
+
+        public List<string> GetSportTypes()
+        {
+            return SportDB.GetSportTypes();
         }
     }
 }

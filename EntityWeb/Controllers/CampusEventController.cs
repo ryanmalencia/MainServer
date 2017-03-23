@@ -51,5 +51,12 @@ namespace ConsoleWebAPI.Controllers
         {
             return Ok(JsonConvert.SerializeObject(CampusEventLogic.GetNextHourEvents(type)));
         }
+
+        [Route("api/campusevent/getcampuseventtypes")]
+        [HttpGet]
+        public IHttpActionResult GetCampusEventTypes()
+        {
+            return Ok(JsonConvert.SerializeObject(CampusEventLogic.GetCampusEventTypes()));
+        }
     }
 }

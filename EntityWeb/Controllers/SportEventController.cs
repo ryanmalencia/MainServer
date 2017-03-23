@@ -59,5 +59,19 @@ namespace EntityWeb.Controllers
         {
             return Ok(JsonConvert.SerializeObject(SportEventLogic.GetAttendStatus(id, user)));
         }
+
+        [Route("api/sportevent/getnexthourevents/{type}")]
+        [HttpGet]
+        public IHttpActionResult GetNextHourEvents(string type)
+        {
+            return Ok(JsonConvert.SerializeObject(SportEventLogic.GetNextHourEvents(type)));
+        }
+
+        [Route("api/sportevent/getsporttypes")]
+        [HttpGet]
+        public IHttpActionResult GetSportTypes()
+        {
+            return Ok(JsonConvert.SerializeObject(SportEventLogic.GetSportTypes()));
+        }
     }
 }

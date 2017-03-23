@@ -34,7 +34,7 @@ namespace EntityWeb.DBInteraction
         {
             SportEventCollection Events = new SportEventCollection();
 
-            DateTime Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            DateTime Date = DateTime.Now;
 
             List<SportEvent> theevents = DB.SportEvents.Where(b=> b.Date >= Date).OrderBy(a => a.Date).ToList();
 
@@ -55,7 +55,7 @@ namespace EntityWeb.DBInteraction
         {
             SportEventCollection Events = new SportEventCollection();
 
-            DateTime Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            DateTime Date = DateTime.Now;
 
             List<SportEvent> theevents = DB.SportEvents.Where(b => b.Date >= Date).OrderBy(a => a.Date).ToList();
 
@@ -143,6 +143,28 @@ namespace EntityWeb.DBInteraction
             {
                 return new SportEventAttend(Going:false);
             }
+        }
+
+        public SportEventCollection GetNextHourEvents(string type)
+        {
+            SportEventCollection Events = new SportEventCollection();
+            DateTime date = DateTime.Now;
+            DateTime high = DateTime.Now;
+            high = high.AddMinutes(67);
+            DateTime low = DateTime.Now;
+            low = low.AddMinutes(51);
+            Events.Events = DB.SportEvents.Where(a => a.Date < high && a.Date > low && date < a.Date && a.Sport.Name == type).ToList();
+            return Events;
+        }
+
+        public List<string> GetSportTypes()
+        {
+            List<string> types = new List<string>();
+            foreach (Sport sport in DB.Sports)
+            {
+                types.Add(sport.Name);
+            }
+            return types;
         }
     }
 }

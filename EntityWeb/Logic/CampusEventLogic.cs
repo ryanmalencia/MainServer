@@ -1,5 +1,6 @@
 ﻿using EntityWeb.DBInteraction;
 using DataTypes;
+using System.Collections.Generic;
 
 namespace EntityWeb.Logic
 {
@@ -34,6 +35,11 @@ namespace EntityWeb.Logic
         public CampusEventCollection GetNextHourEvents(string type)
         {
             return EventDB.GetNextHourEvents(type);
+        }
+
+        public List<string> GetCampusEventTypes()
+        {
+            return EventDB.GetCampusEventTypes();
         }
     }
 }
