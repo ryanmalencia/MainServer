@@ -2,11 +2,25 @@
     ViewBag.Title = "Home Page";
 }
 @section scripts{
-@Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
-@Scripts.Render("~/Scripts/jquery.signalR-2.1.2.js")
-@Scripts.Render("~/signalr/hubs")
+
 @Scripts.Render("~/Scripts/MainScript1.0.2.js")
 }
+
+<style>
+    table {
+        width: 100%;
+    }
+    td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 5px;
+    }
+    th {
+        text-align: center;
+        vertical-align: middle;
+        padding: 5px;
+    }
+</style>
 
 <html>
 <body>
@@ -14,7 +28,7 @@
     <div id="infoTable">
         <table border="1">
             <thead>
-                <tr><th>ID</th><th>Name</th><th>Status</th></tr>
+                <tr><th width="10%">ID</th><th width="40%">Name</th><th width="50%">Status</th></tr>
             </thead>
             <tbody>
                 <tr class="loading"><td colspan="2">loading...</td></tr>

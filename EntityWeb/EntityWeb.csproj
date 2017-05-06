@@ -236,8 +236,11 @@
     <Compile Include="SignalR\AgentInfo.cs" />
     <Compile Include="SignalR\AgentTicker.cs" />
     <Compile Include="SignalR\AgentTickerHub.cs" />
+    <Compile Include="SignalR\ServerStatus.cs" />
+    <Compile Include="SignalR\ServerStatusHub.cs" />
     <Compile Include="SignalR\Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusClasses\GetStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -247,6 +250,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\green.png" />
+    <Content Include="Images\red.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -282,6 +287,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\ServerStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

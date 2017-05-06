@@ -22,5 +22,10 @@ namespace EntityWeb.Controllers
 
             return View();
         }
+
+        public ActionResult ServerStatus()
+        {
+            return View();
+        }
     }
 }

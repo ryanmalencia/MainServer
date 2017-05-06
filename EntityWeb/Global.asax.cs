@@ -5,6 +5,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using EntityWeb.DAL;
 using System.Data.Entity;
+using EntityWeb.StatusClasses;
 
 namespace EntityWeb
 {
@@ -21,6 +22,8 @@ namespace EntityWeb
             Database.SetInitializer(new DataInitializer());
             DataContext c = new DataContext();
             c.Database.Initialize(true);
+            GetStatus stat = new GetStatus();
+            stat.Start();
         }
     }
 }

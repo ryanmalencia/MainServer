@@ -63,8 +63,7 @@ namespace SignalR.AgentTicker
 
         public void AddAgent(Agent agent)
         {
-            _information.TryAdd(agent.Name, agent);
-            UpdateInformation(null);
+            Clients.All.addMachine(agent);
         }
 
         public void SetAgentRunning(string AgentName,string JobName)

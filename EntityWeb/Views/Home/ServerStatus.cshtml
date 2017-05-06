@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 5px;
+    }
+    th {
+        text-align: center;
+        vertical-align: middle;
+        padding: 5px;
+    }
+</style>
+
+<html>
+<body>
+    <h1>Server Status</h1>
+    <br/>
+    <table>
+        <tr>
+            <td>
+                Desktop Status
+            </td>
+            <td>
+                <img id="desktopled" height="15" width="15"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                SQL Server Status
+            </td>
+            <td>
+                <img id="sqlled" height="15" width="15" />
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(function () {
+        var status = $.connection.ServerStatusHub;
+
+        status.client.updateDesktop = function (state) {
+            if (state) {
+                $('#desktopled')[0].src = '@Url.Content("~/Images/green.png")';
+            }
+            else {
+                $('#desktopled')[0].src = '@Url.Content("~/Images/red.png")';
+            }
+        }
+
+        status.client.updateSQL = function (state) {
+            if (state) {
+                $('#sqlled')[0].src = '@Url.Content("~/Images/green.png")';
+            }
+            else {
+                $('#sqlled')[0].src = '@Url.Content("~/Images/red.png")';
+            }
+        }
+        $.connection.hub.start();
+    });
+</script>

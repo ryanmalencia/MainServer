@@ -80,7 +80,16 @@ $(function () {
         var displayInfo = formatInfo(info),
             $row = $(rowTemplate.supplant(displayInfo));
         var $therow = $infoTableBody.find('tr[data-symbol=' + info.Name + ']');
-        if ($therow[0] === null) {
+        if ($therow[0] == null) {
+            $infoTableBody.append(rowTemplate.supplant(info));
+        }
+    }
+
+    ticker.client.addMachine = function (info) {
+        var displayInfo = formatInfo(info),
+            $row = $(rowTemplate.supplant(displayInfo));
+        var $therow = $infoTableBody.find('tr[data-symbol=' + info.Name + ']');
+        if ($therow[0] == null) {
             $infoTableBody.append(rowTemplate.supplant(info));
         }
     }
