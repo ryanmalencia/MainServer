@@ -29,7 +29,7 @@ namespace EntityWeb.DBInteraction
             DB.SaveChanges();
         }
 
-        public void SetAgentRunning(string AgentName, int JobID)
+        public string SetAgentRunning(string AgentName, int JobID)
         {
             var Agent = DB.Agents.FirstOrDefault(a => a.Name.ToLower() == AgentName.ToLower());
             var Job = DB.Jobs.FirstOrDefault(a => a.JobID == JobID);
@@ -39,7 +39,9 @@ namespace EntityWeb.DBInteraction
                 Agent.Sent_Job = 1;
                 Agent.fk_job = JobID;
                 DB.SaveChanges();
+                return Job.JobName;
             }
+            return "";
         }
 
         public AgentCollection GetIdleAgents()

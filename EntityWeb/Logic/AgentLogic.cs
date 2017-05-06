@@ -50,8 +50,8 @@ namespace EntityWeb.Logic
         /// <param name="pk_job">Job pk to Give to Agent</param>
         public void SetAgentRunning(string AgentName, int pk_job)
         {
-            AgentDB.SetAgentRunning(AgentName, pk_job);
-            AgentTicker.SetAgentRunning(AgentName);
+            string jobname = AgentDB.SetAgentRunning(AgentName, pk_job);
+            AgentTicker.SetAgentRunning(AgentName,jobname);
         }
         /// <summary>
         /// Set Specified Agent to Queued State
@@ -77,6 +77,7 @@ namespace EntityWeb.Logic
         public void SetAgentDead(string AgentName)
         {
             AgentDB.SetAgentDead(AgentName);
+            AgentTicker.SetAgentDead(AgentName);
         }
         /// <summary>
         /// Delete the Specified Agent
