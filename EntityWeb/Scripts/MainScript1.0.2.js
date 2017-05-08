@@ -93,6 +93,5 @@ $(function () {
             $infoTableBody.append(rowTemplate.supplant(info));
         }
     }
-
     $.connection.hub.start().done(init);
 });

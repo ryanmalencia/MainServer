@@ -8,8 +8,11 @@ namespace WebAPIClient
         /// <summary>
         /// the base string for connecting to the WebAPI
         /// </summary>
+#if DEBUG
         static string api_string = "http://10.0.0.205:44444/";
-        //static string api_string = "http://ryanlaptop:44444/";
+#elif RELEASE
+        static string api_string = "http://10.0.0.205/";
+#endif 
         /// <summary>
         /// Get object from the DB
         /// </summary>
