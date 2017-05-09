@@ -10,7 +10,7 @@ namespace WebAPIClient
         /// </summary>
 #if DEBUG
         static string api_string = "http://10.0.0.205:44444/";
-#elif RELEASE
+#else
         static string api_string = "http://10.0.0.205/";
 #endif 
         /// <summary>
