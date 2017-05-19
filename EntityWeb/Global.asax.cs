@@ -11,7 +11,7 @@ namespace EntityWeb
 {
     public class MvcApplication : HttpApplication
     {
-        protected void Application_Start()
+        public void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);

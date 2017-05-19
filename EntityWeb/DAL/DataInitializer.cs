@@ -2,7 +2,7 @@
 
 namespace EntityWeb.DAL
 {
-    public class DataInitializer : DropCreateDatabaseIfModelChanges<DataContext>
+    public class DataInitializer : CreateDatabaseIfNotExists<DataContext>
     {
         protected override void Seed(DataContext context)
         {
