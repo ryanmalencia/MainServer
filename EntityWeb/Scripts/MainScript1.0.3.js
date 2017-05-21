@@ -9,9 +9,11 @@
     };
 }
 
+
+
 $(function () {
 
-    var ticker = $.connection.InformationHub, $infoTable = $('#infoTable'), rowTemplate = '<tr data-symbol="{Name}" style="background-color:{Color}"><td>{ID}</td><td>{Name}</td><td>{Running}</td><td class="kill"></td></tr>';
+    var ticker = $.connection.InformationHub, $infoTable = $('#infoTable'), rowTemplate = '<tr data-symbol="{Name}" style="background-color:{Color}"><td>{ID}</td><td>{Name}</td><td>{Running}</td><td class="view">View</td></tr>';
     $infoTableBody = $infoTable.find('tbody');
 
     function formatInfo(info) {

@@ -28,12 +28,19 @@
     <div id="infoTable">
         <table border="1">
             <thead>
-                <tr><th width="10%">ID</th><th width="40%">Name</th><th width="40%">Status</th><th width="10%">Kill</th></tr>
+                <tr><th width="10%">ID</th><th width="40%">Name</th><th width="40%">Status</th><th width="10%">View</th></tr>
             </thead>
             <tbody>
-                <tr class="loading"><td colspan="2">loading...</td></tr>
+                <tr class="loading"><td colspan="2">loading...</td><td></td><td></td><td></td></tr>
             </tbody>
         </table>
     </div>
+
+    <script type="text/javascript">
+        $(document).on('click', '.view', function () {
+            var mach = $(this).closest('tr')[0].cells[1].innerHTML;
+            window.location.href = "http://10.0.0.205:44444/Home/AgentStatus?" + mach;
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,55 @@
+﻿@using DataTypes
+@using WebAPIClient.APICalls
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AgentStatus</title>
+</head>
+<body>
+    <div> 
+        @{
+            string agentName = Request.Url.AbsoluteUri.Split('?')[1];
+            Agent agent = AgentAPI.GetAgent(agentName);
+            <h3>@Html.Raw(agent.Name)</h3>
+        }
+    </div>
+    <div>
+        <h3 id="status">Connecting...</h3>
+    </div>
+    <div>
+        <h3 id="job"></h3>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            getData(window.location.href);
+        });
+
+        function getData(data) {
+            mach = data.split('?')[1];
+            $.getJSON('http://10.0.0.205/api/agent/getagent/' + mach, function (d) {
+                var obj = JSON.parse(d);
+                startR(obj.IP);
+            });
+        }
+
+        function startR(data) {
+            var connection = $.hubConnection("http://" + data);
+            var hub = connection.createHubProxy("AgentStatusHub");
+            hub.on("updateDesktop", Message);
+            connection.start({ jsonp: true });
+            $("#status")[0].innerHTML = "Connected";
+        }
+
+        function Message(mess) {
+            $("#job")[0].innerHTML = mess;
+        }
+    </script>
+</body>
+</html>

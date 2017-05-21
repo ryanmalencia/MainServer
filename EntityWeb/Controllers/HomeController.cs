@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using DataTypes;
+using WebAPIClient.APICalls;
 
 namespace EntityWeb.Controllers
 {
@@ -19,11 +21,16 @@ namespace EntityWeb.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
+            
             return View();
         }
 
         public ActionResult ServerStatus()
+        {
+            return View();
+        }
+
+        public ActionResult AgentStatus()
         {
             return View();
         }
