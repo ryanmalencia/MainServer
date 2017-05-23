@@ -42,7 +42,7 @@
         function startR(data) {
             var connection = $.hubConnection("http://" + data);
             var hub = connection.createHubProxy("AgentStatusHub");
-            hub.on("updateDesktop", Message);
+            hub.on("updateJob", Message);
             connection.start({ jsonp: true });
             $("#status")[0].innerHTML = "Connected";
         }
