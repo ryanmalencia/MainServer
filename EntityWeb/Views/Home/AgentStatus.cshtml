@@ -15,9 +15,16 @@
 <body>
     <div> 
         @{
-            string agentName = Request.Url.AbsoluteUri.Split('?')[1];
-            Agent agent = AgentAPI.GetAgent(agentName);
-            <h3>@Html.Raw(agent.Name)</h3>
+            if (Request.Url.AbsoluteUri.Contains('?'))
+            {
+                string agentName = Request.Url.AbsoluteUri.Split('?')[1];
+                Agent agent = AgentAPI.GetAgent(agentName);
+                <h3>@Html.Raw(agent.Name)</h3>
+            }
+            else
+            {
+                <h3>No Agent Selected</h3>
+            }
         }
     </div>
     <div>
@@ -55,8 +62,25 @@
             var hub = connection.createHubProxy("AgentStatusHub");
             hub.on("updateJob", Message);
             hub.on("updateHardware", Hardware);
-            connection.start({ jsonp: true });
-            $("#status")[0].innerHTML = "Connected";
+            connection.start({ jsonp: true })
+                .done(function () {
+                    $("#status")[0].innerHTML = "Connected";
+                })
+                .fail(function () {
+                    $("#status")[0].innerHTML = "Unable to Connect";
+                });
+            connection.disconnected(function () {
+                setTimeout(function () {
+                    $("#status")[0].innerHTML = "Attempting to Connect...";
+                    connection.start({ jsonp: true })
+                        .done(function () {
+                            $("#status")[0].innerHTML = "Connected";
+                        })
+                        .fail(function () {
+                            $("#status")[0].innerHTML = "Unable to Connect";
+                        });
+                }, 5000);
+            });
         }
 
         function Message(mess) {
