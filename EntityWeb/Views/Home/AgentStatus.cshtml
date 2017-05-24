@@ -62,6 +62,12 @@
             var hub = connection.createHubProxy("AgentStatusHub");
             hub.on("updateJob", Message);
             hub.on("updateHardware", Hardware);
+            connection.disconnected(function () {
+                $("#status")[0].innerHTML = "Disconnected";
+            });
+            connection.reconnecting(function () {
+                $("#status")[0].innerHTML = "Reconnecting";
+            });
             connection.start({ jsonp: true })
                 .done(function () {
                     $("#status")[0].innerHTML = "Connected";
@@ -69,18 +75,6 @@
                 .fail(function () {
                     $("#status")[0].innerHTML = "Unable to Connect";
                 });
-            connection.disconnected(function () {
-                setTimeout(function () {
-                    $("#status")[0].innerHTML = "Attempting to Connect...";
-                    connection.start({ jsonp: true })
-                        .done(function () {
-                            $("#status")[0].innerHTML = "Connected";
-                        })
-                        .fail(function () {
-                            $("#status")[0].innerHTML = "Unable to Connect";
-                        });
-                }, 5000);
-            });
         }
 
         function Message(mess) {
