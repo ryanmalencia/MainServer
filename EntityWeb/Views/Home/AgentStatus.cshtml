@@ -26,6 +26,17 @@
     <div>
         <h3 id="job"></h3>
     </div>
+    <table>
+        <tr>
+            <td id="cpucell">Waiting for data...</td>
+        </tr>
+        <tr>
+            <td id="ramcell">Waiting for data...</td>
+        </tr>
+        <tr>
+            <td id="diskcell"></td>
+        </tr>
+    </table>
     <script type="text/javascript">
         $(document).ready(function () {
             getData(window.location.href);
@@ -43,12 +54,18 @@
             var connection = $.hubConnection("http://" + data);
             var hub = connection.createHubProxy("AgentStatusHub");
             hub.on("updateJob", Message);
+            hub.on("updateHardware", Hardware);
             connection.start({ jsonp: true });
             $("#status")[0].innerHTML = "Connected";
         }
 
         function Message(mess) {
             $("#job")[0].innerHTML = mess;
+        }
+
+        function Hardware(info) {
+            $("#ramcell")[0].innerHTML = info.split('$')[1];
+            $("#cpucell")[0].innerHTML = info.split('&')[1];
         }
     </script>
 </body>
