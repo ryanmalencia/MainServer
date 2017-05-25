@@ -5,7 +5,23 @@
 }
 
 
-<!DOCTYPE html>
+<style>
+    .widetable {
+        width: 100%;
+    }
+
+    .headtext {
+        text-align: center;
+        vertical-align: middle;
+        padding: 2px;
+        font-size:25px;
+    }
+
+    .subtext {
+        padding: 5px;
+        font-size:17px;
+    }
+</style>
 
 <html>
 <head>
@@ -13,35 +29,37 @@
     <title>AgentStatus</title>
 </head>
 <body>
-    <div> 
+    <table style="margin-top:15px;" class="widetable"> 
+        <tr>
         @{
             if (Request.Url.AbsoluteUri.Contains('?'))
             {
                 string agentName = Request.Url.AbsoluteUri.Split('?')[1];
                 Agent agent = AgentAPI.GetAgent(agentName);
-                <h3>@Html.Raw(agent.Name)</h3>
+                <td class="headtext">@Html.Raw(agent.Name)</td>
             }
             else
             {
-                <h3>No Agent Selected</h3>
+                <td class="headtext">@Html.Raw("No Agent Selected")</td>
             }
         }
-    </div>
-    <div>
-        <h3 id="status">Connecting...</h3>
-    </div>
-    <div>
-        <h3 id="job"></h3>
-    </div>
-    <table>
-        <tr>
-            <td id="cpucell">Waiting for data...</td>
         </tr>
         <tr>
-            <td id="ramcell">Waiting for data...</td>
+            <td id="status" class="headtext">Connecting...</td>
         </tr>
         <tr>
-            <td id="diskcell"></td>
+            <td id="job" class="headtext"></td>
+        </tr>
+    </table>
+    <table class="widetable">
+        <tr>
+            <td id="diskcell" width="50%" class="subtext">Waiting for data...</td><td width="50%"></td>
+        </tr>
+        <tr>
+            <td id="cpucell" width="50%" class="subtext">Waiting for data...</td><td width="50%"></td>
+        </tr>
+        <tr>
+            <td id="ramcell" width="50%" class="subtext">Waiting for data...</td><td width="50%"></td>
         </tr>
     </table>
     <script type="text/javascript">
@@ -78,12 +96,13 @@
         }
 
         function Message(mess) {
-            $("#job")[0].innerHTML = mess;
+            $("#job")[0].innerHTML = "Status: " + mess;
         }
 
         function Hardware(info) {
             $("#ramcell")[0].innerHTML = info.split('$')[1];
             $("#cpucell")[0].innerHTML = info.split('&')[1];
+            $("#diskcell")[0].innerHTML = info.split('!')[1];
         }
     </script>
 </body>
