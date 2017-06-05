@@ -50,6 +50,7 @@
     <Compile Include="APICalls\JobTaskAPI.cs" />
     <Compile Include="APICalls\JobAPI.cs" />
     <Compile Include="APICalls\LocationAPI.cs" />
+    <Compile Include="APICalls\LogAPI.cs" />
     <Compile Include="APICalls\OSAPI.cs" />
     <Compile Include="APICalls\PoolAPI.cs" />
     <Compile Include="APICalls\SportEventAPI.cs" />

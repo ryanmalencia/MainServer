@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataTypes
 {
-    public class Log
+    public class Log : IComparable<Log>
     {
         public int LogID { get; set; }
         public string Name { get; set; }
@@ -33,6 +29,25 @@ namespace DataTypes
             else
             {
                 Date = date;
+            }
+        }
+
+        public int CompareTo(Log other)
+        {
+            if (other != null)
+            {
+                if (Date != null && other.Date != null)
+                {
+                    return Date.CompareTo(other.Date);
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return 1;
             }
         }
     }

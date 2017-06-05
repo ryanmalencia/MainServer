@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
-using DataTypes;
-using EntityWeb.DBInteraction;
 
 namespace EntityWeb.SignalR
 {

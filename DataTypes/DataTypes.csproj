@@ -55,6 +55,7 @@
     <Compile Include="Location.cs" />
     <Compile Include="LocationCollection.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="LogCollection.cs" />
     <Compile Include="PrintCollection.cs" />
     <Compile Include="PrintLocation.cs" />
     <Compile Include="SportEventAttend.cs" />

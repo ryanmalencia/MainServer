@@ -21,6 +21,21 @@
         padding: 5px;
         font-size:17px;
     }
+
+    #table-wrapper {
+        position: relative;
+    }
+
+    #table-scroll {
+        height: 200px;
+        overflow: auto;
+    }
+
+    #table-wrapper table {
+        width: 100%;
+    }
+
+
 </style>
 
 <html>
@@ -62,6 +77,21 @@
             <td id="ramcell" width="50%" class="subtext">Waiting for data...</td><td width="50%"></td>
         </tr>
     </table>
+    <br/>
+    <table class="widetable">
+        <thead><tr><th width="5%">Level</th><th width="15%">Agent</th><th width="50%">Message</th><th width="30%">Date</th></tr></thead>
+    </table>
+    <div id="table-wrapper">
+    <div id="table-scroll">
+    <table class="widetable" id="logstable">
+        <col width="5%" />
+        <col width="15%" />
+        <col width="50%" />
+        <col width="30%" />
+        <tbody></tbody>
+    </table>
+        </div>
+        </div>
     <script type="text/javascript">
         $(document).ready(function () {
             getData(window.location.href);
@@ -71,11 +101,39 @@
             mach = data.split('?')[1];
             $.getJSON('http://10.0.0.205/api/agent/getagent/' + mach, function (d) {
                 var obj = JSON.parse(d);
-                startR(obj.IP);
+                startR(obj.IP,obj.Name);
+            });
+            $.getJSON('http://10.0.0.205/api/log/getlogsbyagent/' + mach, function (d) {
+                var obj = JSON.parse(d);
+                jQuery.each(obj.Logs, function () {
+                    var levelCell = $("<td>").css("white-space", "nowrap").text(this.LogLevel);
+                    var agentCell = $("<td>").css("white-space", "nowrap").text(this.Name);
+                    var messageCell = $("<td>").css("white-space", "nowrap").text(this.Message);
+                    var dateCell = $("<td>").css("white-space", "nowrap").text(this.Date.split('T')[0] + " " + this.Date.split('T')[1]);
+                    var row = $("<tr>").append(levelCell, agentCell, messageCell, dateCell);
+                    $('#logstable tbody').append(row);
+                });
             });
         }
 
-        function startR(data) {
+        function startR(data,name) {
+            var logs = $.connection.LogTickerHub;
+
+            logs.client.newLogMessage = function (log) {
+                if (log.Name == name) {
+                    var levelCell = $("<td>").css("white-space", "nowrap").text(log.LogLevel);
+                    var agentCell = $("<td>").css("white-space", "nowrap").text(log.Name);
+                    var messageCell = $("<td>").css("white-space", "nowrap").text(log.Message);
+                    var dateCell = $("<td>").css("white-space", "nowrap").text(log.Date.split('T')[0] + " " + log.Date.split('T')[1]);
+                    var row = $("<tr>").append(levelCell, agentCell, messageCell, dateCell);
+                    $('#logstable tbody').prepend(row);
+                }
+            };
+
+            $.connection.hub.start(function () {
+            });
+
+
             var connection = $.hubConnection("http://" + data);
             var hub = connection.createHubProxy("AgentStatusHub");
             hub.on("updateJob", Message);
@@ -86,6 +144,11 @@
             connection.reconnecting(function () {
                 $("#status")[0].innerHTML = "Reconnecting";
             });
+
+            connection.reconnected(function () {
+                $("#status")[0].innerHTML = "Connected";
+            });
+
             connection.start({ jsonp: true })
                 .done(function () {
                     $("#status")[0].innerHTML = "Connected";

@@ -52,12 +52,6 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net.SignalR, Version=0.1.5286.20179, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.SignalR.2.1.0.1\lib\net45\log4net.SignalR.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
       <Private>True</Private>
@@ -204,6 +198,7 @@
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\JobTaskController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\MyAppController.cs" />
     <Compile Include="Controllers\OSController.cs" />
     <Compile Include="Controllers\PoolController.cs" />
@@ -219,6 +214,7 @@
     <Compile Include="DBInteraction\JobDBInteraction.cs" />
     <Compile Include="DBInteraction\JobTaskDBInteraction.cs" />
     <Compile Include="DBInteraction\LocationDBInteraction.cs" />
+    <Compile Include="DBInteraction\LogDBInteraction.cs" />
     <Compile Include="DBInteraction\OSDBInteraction.cs" />
     <Compile Include="DBInteraction\PoolDBInteraction.cs" />
     <Compile Include="DBInteraction\PrintDBInteraction.cs" />
@@ -234,6 +230,7 @@
     <Compile Include="Logic\JobLogic.cs" />
     <Compile Include="Logic\JobTaskLogic.cs" />
     <Compile Include="Logic\LocationLogic.cs" />
+    <Compile Include="Logic\LogLogic.cs" />
     <Compile Include="Logic\OSLogic.cs" />
     <Compile Include="Logic\PoolLogic.cs" />
     <Compile Include="Logic\PrintLogic.cs" />
@@ -242,6 +239,8 @@
     <Compile Include="SignalR\AgentInfo.cs" />
     <Compile Include="SignalR\AgentTicker.cs" />
     <Compile Include="SignalR\AgentTickerHub.cs" />
+    <Compile Include="SignalR\LogTicker.cs" />
+    <Compile Include="SignalR\LogTickerHub.cs" />
     <Compile Include="SignalR\ServerStatus.cs" />
     <Compile Include="SignalR\ServerStatusHub.cs" />
     <Compile Include="SignalR\Startup.cs" />

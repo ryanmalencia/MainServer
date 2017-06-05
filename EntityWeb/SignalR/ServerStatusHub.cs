@@ -1,9 +1,5 @@
-﻿
-using System.Collections.Generic;
-using Microsoft.AspNet.SignalR;
+﻿using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
-using DataTypes;
-
 
 namespace EntityWeb.SignalR
 {
