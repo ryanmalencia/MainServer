@@ -20,6 +20,7 @@ namespace EntityWeb.DBInteraction
             {
                 Agents.AddAgent(agent);
             }
+            Agents.Agents.Sort();
             return Agents;
         }
 

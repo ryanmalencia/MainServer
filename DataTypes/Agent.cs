@@ -1,6 +1,8 @@
-﻿namespace DataTypes
+﻿using System;
+
+namespace DataTypes
 {
-    public class Agent
+    public class Agent : IComparable<Agent>
     {
         public int AgentID { get; set; }
         public string Name { get; set; }
@@ -71,6 +73,25 @@
             else
             {
                 return true;
+            }
+        }
+
+        public int CompareTo(Agent other)
+        {
+            if (other != null)
+            {
+                if (Name != null && other.Name != null)
+                {
+                    return Name.CompareTo(other.Name);
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return 1;
             }
         }
     }
