@@ -1,8 +1,9 @@
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
-db.lock
-storage.ide
+.vs/EntityTest
+
+
 
 
 *.exe
