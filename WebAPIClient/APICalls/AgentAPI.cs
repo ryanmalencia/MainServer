@@ -103,5 +103,27 @@ namespace WebAPIClient.APICalls
             string method = "PUT";
             WebAPIClient.SendResponseJson(http, agent, method);
         }
+
+        /// <summary>
+        /// Update Hardware of an Agent
+        /// </summary>
+        /// <param name="info"></param>
+        public static void UpdateHardware(Hardware info)
+        {
+            string http = "api/agent/updatehardware/";
+            string method = "POST";
+            WebAPIClient.SendResponseJson(http, info, method);
+        }
+
+        /// <summary>
+        /// Update Job of an Agent
+        /// </summary>
+        /// <param name="info"></param>
+        public static void UpdateJob(string info)
+        {
+            string http = "api/agent/updatejob/" + info;
+            string method = "POST";
+            WebAPIClient.SendResponseJson(http, null, method);
+        }
     }
 }

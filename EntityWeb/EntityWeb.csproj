@@ -238,6 +238,8 @@
     <Compile Include="Logic\SportEventLogic.cs" />
     <Compile Include="Logic\UserLogic.cs" />
     <Compile Include="SignalR\AgentInfo.cs" />
+    <Compile Include="SignalR\AgentStatus.cs" />
+    <Compile Include="SignalR\AgentStatusHub.cs" />
     <Compile Include="SignalR\AgentTicker.cs" />
     <Compile Include="SignalR\AgentTickerHub.cs" />
     <Compile Include="SignalR\LogTicker.cs" />
@@ -346,7 +348,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59939</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://10.0.0.238:44444/</IISUrl>
+          <IISUrl>http://localhost:44444/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

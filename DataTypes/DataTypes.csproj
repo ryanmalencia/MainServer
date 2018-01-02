@@ -51,6 +51,7 @@
     <Compile Include="DiningLocation.cs" />
     <Compile Include="DiningLocationCollection.cs" />
     <Compile Include="FitnessLocation.cs" />
+    <Compile Include="Hardware.cs" />
     <Compile Include="LibraryLocation.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="LocationCollection.cs" />

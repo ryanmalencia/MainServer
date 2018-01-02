@@ -79,5 +79,33 @@ namespace ConsoleWebAPI.Controllers
         {
             AgentLogic.Update(agent);
         }
+
+        [Route("api/agent/kill/{agent}")]
+        [HttpPost]
+        public void Kill(string agent)
+        {
+            AgentLogic.Kill(agent);
+        }
+
+        [Route("api/agent/shutdown/{agent}")]
+        [HttpPost]
+        public void Shutdown(string agent)
+        {
+            AgentLogic.Shutdown(agent);
+        }
+
+        [Route("api/agent/updatehardware/")]
+        [HttpPost]
+        public void UpdateHardware(Hardware info)
+        {
+            AgentLogic.UpdateHardware(info);
+        }
+
+        [Route("api/agent/updatejob/{info}")]
+        [HttpPost]
+        public void UpdateJob(string info)
+        {
+            AgentLogic.UpdateJob(info);
+        }
     }
 }

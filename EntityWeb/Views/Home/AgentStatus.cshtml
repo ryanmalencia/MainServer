@@ -14,7 +14,15 @@
         text-align: center;
         vertical-align: middle;
         padding: 2px;
-        font-size:25px;
+        font-size: 25px;
+    }
+
+    .actions {
+        text-align: center;
+        vertical-align: middle;
+        align-self: center;
+        display: block;
+        margin: 2px;
     }
 
     .subtext {
@@ -47,11 +55,12 @@
     <table style="margin-top:15px;" class="widetable"> 
         <tr>
         @{
+            string agentName = "";
             if (Request.Url.AbsoluteUri.Contains('?'))
             {
-                string agentName = Request.Url.AbsoluteUri.Split('?')[1];
-                Agent agent = AgentAPI.GetAgent(agentName);
-                <td class="headtext">@Html.Raw(agent.Name)</td>
+                 agentName = Request.Url.AbsoluteUri.Split('?')[1];
+                 Agent agent = AgentAPI.GetAgent(agentName);
+                 <td class="headtext">@Html.Raw(agent.Name)</td>
             }
             else
             {
@@ -65,29 +74,41 @@
         <tr>
             <td id="job" class="headtext"></td>
         </tr>
+        
     </table>
     <table class="widetable">
         <tr>
-            <td id="diskcell" width="50%" class="subtext">Waiting for data...</td><td width="50%"></td>
+            <td id="diskcell" width="50%" class="subtext">Waiting for data...</td>
         </tr>
         <tr>
-            <td id="cpucell" width="50%" class="subtext">Waiting for data...</td><td width="50%"></td>
+            <td id="cpucell" width="50%" class="subtext">Waiting for data...</td>
         </tr>
         <tr>
-            <td id="ramcell" width="50%" class="subtext">Waiting for data...</td><td width="50%"></td>
+            <td id="ramcell" width="50%" class="subtext">Waiting for data...</td>
+        </tr>
+        <tr>
+            <td>
+                @{
+                string name = Request.Url.AbsoluteUri.Split('?')[1];
+                <div>
+                    <button type="button" class="actions" id="kill" onclick="kill('@name.ToString()')">Kill agent</button>
+                    <button type="button" class="actions" id="shutdown" onclick="shutdown('@name.ToString()')">Shutdown agent</button>
+                </div>
+                }
+            </td>
         </tr>
     </table>
     <br/>
     <table class="widetable">
-        <thead><tr><th width="5%">Level</th><th width="15%">Agent</th><th width="50%">Message</th><th width="30%">Date</th></tr></thead>
+        <thead><tr><th width="10%">Level</th><th width="20%">Agent</th><th width="50%">Message</th><th width="20%">Date</th></tr></thead>
     </table>
     <div id="table-wrapper">
     <div id="table-scroll">
     <table class="widetable" id="logstable">
-        <col width="5%" />
-        <col width="15%" />
+        <col width="10%" />
+        <col width="20%" />
         <col width="50%" />
-        <col width="30%" />
+        <col width="20%" />
         <tbody></tbody>
     </table>
         </div>
@@ -99,11 +120,11 @@
 
         function getData(data) {
             mach = data.split('?')[1];
-            $.getJSON('http://10.0.0.238/api/agent/getagent/' + mach, function (d) {
+            $.getJSON('http://73.236.236.146/api/agent/getagent/' + mach, function (d) {
                 var obj = JSON.parse(d);
                 startR(obj.IP,obj.Name);
             });
-            $.getJSON('http://10.0.0.238/api/log/getlogsbyagent/' + mach, function (d) {
+            $.getJSON('http://73.236.236.146/api/log/getlogsbyagent/' + mach, function (d) {
                 var obj = JSON.parse(d);
                 jQuery.each(obj.Logs, function () {
                     var levelCell = $("<td>").css("white-space", "nowrap").text(this.LogLevel);
@@ -116,8 +137,23 @@
             });
         }
 
+        function kill(name) {
+            $.post('http://73.236.236.146/api/agent/kill/' + name, function (d) {
+
+            });
+        }
+
+        function shutdown(name) {
+            $.post('http://73.236.236.146/api/agent/shutdown/' + name, function (d) {
+
+            });
+        }
+
         function startR(data,name) {
             var logs = $.connection.LogTickerHub;
+            var hub = $.connection.AgentStatusHub;
+            $("#kill").hide();
+            $("#shutdown").hide();
 
             logs.client.newLogMessage = function (log) {
                 if (log.Name == name) {
@@ -130,16 +166,31 @@
                 }
             };
 
+            hub.client.updateHardware = function (info) {
+                if (info.Name == name) {
+                    $("#kill").show();
+                    $("#shutdown").show();
+                    $("#status")[0].innerHTML = "Connected";
+                    $("#ramcell")[0].innerHTML = info.Ram;
+                    $("#cpucell")[0].innerHTML = info.CPU;
+                    $("#diskcell")[0].innerHTML = info.Disk;
+                }
+            }
+
             $.connection.hub.start(function () {
             });
 
 
-            var connection = $.hubConnection("http://" + data);
+
+            /*
+            var connection = $.hubConnection("http://73.236.236.146");
             var hub = connection.createHubProxy("AgentStatusHub");
             hub.on("updateJob", Message);
             hub.on("updateHardware", Hardware);
             connection.disconnected(function () {
                 $("#status")[0].innerHTML = "Disconnected";
+                $("#kill").hide();
+                $("#shutdown").hide();
             });
             connection.reconnecting(function () {
                 $("#status")[0].innerHTML = "Reconnecting";
@@ -147,15 +198,19 @@
 
             connection.reconnected(function () {
                 $("#status")[0].innerHTML = "Connected";
+                $("#kill").show();
+                $("#shutdown").show();
             });
 
             connection.start({ jsonp: true })
                 .done(function () {
                     $("#status")[0].innerHTML = "Connected";
+                    $("#kill").show();
+                    $("#shutdown").show();
                 })
                 .fail(function () {
                     $("#status")[0].innerHTML = "Unable to Connect";
-                });
+                });*/
         }
 
         function Message(mess) {

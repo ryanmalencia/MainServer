@@ -1,6 +1,13 @@
 ﻿using EntityWeb.DBInteraction;
 using DataTypes;
 using SignalR.AgentTicker;
+using SignalR.AgentStatus;
+using System;
+using System.Net;
+using System.Threading;
+using WebAPIClient.APICalls;
+using Newtonsoft.Json;
+
 
 namespace EntityWeb.Logic
 {
@@ -94,6 +101,56 @@ namespace EntityWeb.Logic
         public void Update(Agent Agent)
         {
             AgentDB.Update(Agent);
+        }
+
+        public void Kill(string agent)
+        {
+            Agent current = AgentAPI.GetAgent(agent);
+            if (current != null)
+            {
+                using (var client = new WebClient())
+                {
+                    try
+                    {
+                        client.Headers.Add("content-type", "application/json");
+                        client.UploadString("http://" + current.IP + "/api/machine/kill/", "POST", "");
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+            }
+        }
+
+        public void Shutdown(string agent)
+        {
+            Agent current = AgentAPI.GetAgent(agent);
+            if (current != null)
+            {
+                using (var client = new WebClient())
+                {
+                    try
+                    {
+                        client.Headers.Add("content-type", "application/json");
+                        client.UploadString("http://" + current.IP + "/api/machine/shutdown/", "POST", "");
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+            }
+        }
+
+        public void UpdateHardware(Hardware info)
+        {
+            AgentStatus.Instance.UpdateHardware(info);
+        }
+
+        public void UpdateJob(string info)
+        {
+            AgentStatus.Instance.UpdateJob(info);
         }
     }
 }
