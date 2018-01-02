@@ -36,7 +36,7 @@ namespace EntityWeb.StatusClasses
             {
                 try
                 {
-                    PingReply reply = pinger.Send("10.0.0.205");
+                    PingReply reply = pinger.Send("10.0.0.238");
                     if (reply.Status == IPStatus.Success)
                     {
                         ServerStatus.UpdateDesktop(true);
@@ -51,7 +51,7 @@ namespace EntityWeb.StatusClasses
                     ServerStatus.UpdateDesktop(false);
                 }
 
-                using (SqlConnection conn = new SqlConnection("Server=ryandesktop;Database=PittEvents;User ID=dbaccess;pwd=testing"))
+                using (SqlConnection conn = new SqlConnection("Server=ryandesktop;Database=Control;User ID=sa;pwd=malencia55"))
                 {
                     try
                     {

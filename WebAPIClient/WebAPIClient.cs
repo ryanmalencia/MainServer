@@ -11,7 +11,7 @@ namespace WebAPIClient
 #if DEBUG
         static string api_string = "http://10.0.0.238:44444/";
 #else
-        static string api_string = "http://10.0.0.205/";
+        static string api_string = "http://10.0.0.238/";
 #endif 
         /// <summary>
         /// Get object from the DB

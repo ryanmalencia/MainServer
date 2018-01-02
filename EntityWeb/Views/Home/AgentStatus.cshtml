@@ -99,11 +99,11 @@
 
         function getData(data) {
             mach = data.split('?')[1];
-            $.getJSON('http://10.0.0.205/api/agent/getagent/' + mach, function (d) {
+            $.getJSON('http://10.0.0.238/api/agent/getagent/' + mach, function (d) {
                 var obj = JSON.parse(d);
                 startR(obj.IP,obj.Name);
             });
-            $.getJSON('http://10.0.0.205/api/log/getlogsbyagent/' + mach, function (d) {
+            $.getJSON('http://10.0.0.238/api/log/getlogsbyagent/' + mach, function (d) {
                 var obj = JSON.parse(d);
                 jQuery.each(obj.Logs, function () {
                     var levelCell = $("<td>").css("white-space", "nowrap").text(this.LogLevel);
