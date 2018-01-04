@@ -1,6 +1,4 @@
 ﻿using System.Web.Mvc;
-using DataTypes;
-using WebAPIClient.APICalls;
 
 namespace EntityWeb.Controllers
 {
@@ -31,6 +29,16 @@ namespace EntityWeb.Controllers
         }
 
         public ActionResult AgentStatus()
+        {
+            return View();
+        }
+
+        public ActionResult Jobs()
+        {
+            return View();
+        }
+
+        public ActionResult JobStatus()
         {
             return View();
         }

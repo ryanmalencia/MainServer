@@ -13,7 +13,7 @@
 
 $(function () {
 
-    var ticker = $.connection.InformationHub, $infoTable = $('#infoTable'), rowTemplate = '<tr data-symbol="{Name}" style="background-color:{Color}"><td>{ID}</td><td>{Name}</td><td>{Running}</td><td class="view">View</td></tr>';
+    var ticker = $.connection.InformationHub, $infoTable = $('#infoTable'), rowTemplate = '<tr data-symbol="{Name}" style="background-color:{Color}"><td width="10%">{ID}</td><td width="40%">{Name}</td><td width="40%">{Running}</td><td class="view" width="10%">View</td></tr>';
     $infoTableBody = $infoTable.find('tbody');
 
     function formatInfo(info) {

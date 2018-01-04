@@ -3,7 +3,7 @@
 }
 @section scripts{
 
-@Scripts.Render("~/Scripts/MainScript1.0.4.js")
+@Scripts.Render("~/Scripts/MainScript1.0.5.js")
 }
 
 <style>
@@ -20,27 +20,46 @@
         vertical-align: middle;
         padding: 5px;
     }
+    #table-wrapper {
+        position: relative;
+    }
+    #table-scroll {
+        height: 300px;
+        overflow: auto;
+    }
+    #table-wrapper table {
+        width: 100%;
+    }
 </style>
 
 <html>
+<head>
+    <title>Agents</title>
+</head>
 <body>
-    <h1>Machines</h1>
-    <div id="infoTable">
+    <h1>Agents</h1>
         <table border="1">
             <thead>
                 <tr><th width="10%">ID</th><th width="40%">Name</th><th width="40%">Status</th><th width="10%">View</th></tr>
             </thead>
-            <tbody>
-                <tr class="loading"><td colspan="2">loading...</td><td></td><td></td><td></td></tr>
-            </tbody>
         </table>
-    </div>
+        <div id="infoTable">
+            <div id="table-wrapper">
+                <div id="table-scroll">
+                    <table border="1">
+                        <tbody>
+                            <tr class="loading"><td colspan="4">loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-    <script type="text/javascript">
-        $(document).on('click', '.view', function () {
-            var mach = $(this).closest('tr')[0].cells[1].innerHTML;
-            window.location.href = "http://73.236.236.146/Home/AgentStatus?" + mach;
-        });
-    </script>
+        <script type="text/javascript">
+            $(document).on('click', '.view', function () {
+                var mach = $(this).closest('tr')[0].cells[1].innerHTML;
+                window.location.href = "http://73.236.236.146/Home/AgentStatus?" + mach;
+            });
+        </script>
 </body>
 </html>

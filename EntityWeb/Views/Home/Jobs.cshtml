@@ -1,0 +1,36 @@
+﻿@using DataTypes
+@using WebAPIClient.APICalls
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    var result = "";
+    if(IsPost)
+    {
+
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Jobs</title>
+</head>
+<body>
+    <h1>Jobs</h1>
+    @using (Html.BeginForm("Upload", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <fieldset>
+            <legend>Upload Zip File</legend>
+            Upload File: <input type="file" name="file" />
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }
+</body>
+</html>

@@ -194,6 +194,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CampusEventController.cs" />
     <Compile Include="Controllers\ConcertController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AgentController.cs" />
     <Compile Include="Controllers\JobController.cs" />
@@ -277,7 +278,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\MainScript1.0.4.js" />
+    <Content Include="Scripts\MainScript1.0.5.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -300,6 +301,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ServerStatus.cshtml" />
     <Content Include="Views\Home\AgentStatus.cshtml" />
+    <Content Include="Views\Home\Jobs.cshtml" />
+    <Content Include="Views\Home\JobStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
