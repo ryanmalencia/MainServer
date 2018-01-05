@@ -13,8 +13,22 @@ namespace EntityWeb.Controllers
        {
             if(file.ContentLength > 0)
             {
+                string dir = file.FileName.Substring(0, file.FileName.LastIndexOf("."));
+                string[] temp = file.FileName.Split('.');
+                string ext = temp[(temp.Length - 1)];
+
+                if(ext != "zip")
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
                 var fileName = Path.GetFileName(file.FileName);
-                var path = Path.Combine(Server.MapPath("~/App_Data"),fileName);
+                var path = Path.Combine(Server.MapPath("~/App_Data"),dir);
+                if(!Directory.Exists(path.ToString()))
+                {
+                    Directory.CreateDirectory(path.ToString());
+                }
+                path = Path.Combine(path.ToString(), fileName);
                 file.SaveAs(path);
             }
             return RedirectToAction("Jobs", "Home");
