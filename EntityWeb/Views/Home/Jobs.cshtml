@@ -22,15 +22,31 @@
 </head>
 <body>
     <h1>Jobs</h1>
+    @{ 
+        if(ViewBag.Message != null)
+        {
+            <p>@ViewBag.Message</p>
+        }
+    }
     @using (Html.BeginForm("Upload", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        <fieldset>
-            <legend>Upload Zip File</legend>
-            Upload File: <input type="file" name="file" />
-            <p>
-                <input type="submit" value="Create" />
-            </p>
-        </fieldset>
+            <fieldset>
+                <legend>Upload Zip File</legend>
+                Upload File: <input type="file" name="file" />
+                <p>
+                    <input type="submit" value="Create" />
+                </p>
+                <br />
+                @{  if (ViewBag.Message != null)
+                    {
+                        <p>@ViewBag.Message</p>
+                    }
+                    else if(ViewBag.Error != null)
+                    {
+                        <p>@ViewBag.Error</p>
+                    }
+                }
+            </fieldset>
     }
 </body>
 </html>

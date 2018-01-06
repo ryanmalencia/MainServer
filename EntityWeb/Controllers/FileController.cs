@@ -19,7 +19,8 @@ namespace EntityWeb.Controllers
 
                 if(ext != "zip")
                 {
-                    return RedirectToAction("Index", "Home");
+                   
+                    return RedirectToAction("Jobs", "Home","Error");
                 }
 
                 var fileName = Path.GetFileName(file.FileName);
@@ -31,7 +32,7 @@ namespace EntityWeb.Controllers
                 path = Path.Combine(path.ToString(), fileName);
                 file.SaveAs(path);
             }
-            return RedirectToAction("Jobs", "Home");
+            return RedirectToAction("Jobs", "Home", "Success");
        }
     }
 }

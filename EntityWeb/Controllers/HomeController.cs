@@ -35,6 +35,20 @@ namespace EntityWeb.Controllers
 
         public ActionResult Jobs()
         {
+            ViewBag.Message = null;
+            return View();
+        }
+
+        public ActionResult Jobs(string message)
+        {
+            if(message.Equals("Success"))
+            {
+                ViewBag.Message = "File uploaded";
+            }
+            else
+            {
+                ViewBag.Error = "Only zip files are allowed";
+            }
             return View();
         }
 
