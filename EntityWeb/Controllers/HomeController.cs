@@ -33,21 +33,18 @@ namespace EntityWeb.Controllers
             return View();
         }
 
-        public ActionResult Jobs()
-        {
-            ViewBag.Message = null;
-            return View();
-        }
-
         public ActionResult Jobs(string message)
         {
-            if(message.Equals("Success"))
+            if (message != null)
             {
-                ViewBag.Message = "File uploaded";
-            }
-            else
-            {
-                ViewBag.Error = "Only zip files are allowed";
+                if (message.Equals("Success"))
+                {
+                    ViewBag.Message = "File uploaded";
+                }
+                else
+                {
+                    ViewBag.Error = "Only zip files are allowed";
+                }
             }
             return View();
         }

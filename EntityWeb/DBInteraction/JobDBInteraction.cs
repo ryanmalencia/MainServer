@@ -23,6 +23,23 @@ namespace EntityWeb.DBInteraction
             return AllJobs;
         }
 
+        public JobCollection GetJobsToRun()
+        {
+            JobCollection Jobs = new JobCollection();
+            foreach (Job job in DB.Jobs.Where(a => a.Distributed == 0 && a.Started == 0))
+            {
+                if(job.Finished == 0)
+                {
+                    Jobs.AddJob(job);
+                }
+                else if(job.Repeat == 1)
+                {
+                    Jobs.AddJob(job);
+                }
+            }
+            return Jobs;
+        }
+
         public Job GetJobById(int Id)
         {
             return DB.Jobs.FirstOrDefault(a => a.JobID == Id);

@@ -11,7 +11,8 @@ namespace EntityWeb.Controllers
        [HttpPost]
        public ActionResult Upload(HttpPostedFileBase file)
        {
-            if(file.ContentLength > 0)
+            string text = "Error";
+            if (file.ContentLength > 0)
             {
                 string dir = file.FileName.Substring(0, file.FileName.LastIndexOf("."));
                 string[] temp = file.FileName.Split('.');
@@ -19,8 +20,8 @@ namespace EntityWeb.Controllers
 
                 if(ext != "zip")
                 {
-                   
-                    return RedirectToAction("Jobs", "Home","Error");
+
+                    return RedirectToAction("Jobs", "Home", new { message = text });
                 }
 
                 var fileName = Path.GetFileName(file.FileName);
@@ -32,7 +33,8 @@ namespace EntityWeb.Controllers
                 path = Path.Combine(path.ToString(), fileName);
                 file.SaveAs(path);
             }
-            return RedirectToAction("Jobs", "Home", "Success");
+            text = "Success";
+            return RedirectToAction("Jobs", "Home", new { message = text });
        }
     }
 }

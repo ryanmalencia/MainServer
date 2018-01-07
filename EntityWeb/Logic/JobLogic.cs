@@ -15,6 +15,14 @@ namespace EntityWeb.Logic
             return JobDB.GetAllJobs();
         }
         /// <summary>
+        /// Get the next set of jobs to run 
+        /// </summary>
+        /// <returns>JobCollection containing jobs to run</returns>
+        public JobCollection GetJobsToRun()
+        {
+            return JobDB.GetJobsToRun();
+        }
+        /// <summary>
         /// Get Job by its ID
         /// </summary>
         /// <param name="Id">ID of desired job</param>

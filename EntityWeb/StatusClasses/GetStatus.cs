@@ -32,7 +32,7 @@ namespace EntityWeb.StatusClasses
             {
                 try
                 {
-                    PingReply reply = pinger.Send("192.168.1.197");
+                    PingReply reply = pinger.Send("74.109.196.114");
                     if (reply.Status == IPStatus.Success)
                     {
                         ServerStatus.UpdateDesktop(true);

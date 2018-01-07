@@ -18,6 +18,18 @@ namespace WebAPIClient.APICalls
             return (JobCollection)collection;
         }
         /// <summary>
+        /// Get Jobs to Run
+        /// </summary>
+        /// <returns></returns>
+        public static JobCollection GetJobsToRun()
+        {
+            string http = "api/job/getjobstorun";
+            string method = "GET";
+            string theobject = WebAPIClient.GetResponseJson(http, null, method);
+            object collection = JsonConvert.DeserializeObject<JobCollection>(theobject);
+            return (JobCollection)collection;
+        }
+        /// <summary>
         /// Get a Job By its ID
         /// </summary>
         /// <param name="id">ID of Job</param>

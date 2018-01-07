@@ -42,7 +42,7 @@ $(function () {
     }
 
     function init() {
-        $.getJSON('http://192.168.1.197/api/agent/getallagents', function (data) {
+        $.getJSON('http://74.109.196.114/api/agent/getallagents', function (data) {
             var obj = JSON.parse(data);
             $infoTableBody.empty();
             $.each(obj.Agents, function () {
