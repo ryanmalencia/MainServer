@@ -3,7 +3,7 @@
 }
 @section scripts{
 
-@Scripts.Render("~/Scripts/MainScript1.0.5.js")
+@Scripts.Render("~/Scripts/MainScript1.0.6.js")
 }
 
 <style>
@@ -58,7 +58,7 @@
         <script type="text/javascript">
             $(document).on('click', '.view', function () {
                 var mach = $(this).closest('tr')[0].cells[1].innerHTML;
-                window.location.href = "http://73.236.236.146/Home/AgentStatus?" + mach;
+                window.location.href = "http://192.168.1.197/Home/AgentStatus?" + mach;
             });
         </script>
 </body>

@@ -9,9 +9,9 @@ namespace WebAPIClient
         /// the base string for connecting to the WebAPI
         /// </summary>
 #if DEBUG
-        static string api_string = "http://10.0.0.238/";
+        static string api_string = "http://192.168.1.197/";
 #else
-        static string api_string = "http://10.0.0.238/";
+        static string api_string = "http://192.168.1.197/";
 #endif 
         /// <summary>
         /// Get object from the DB
