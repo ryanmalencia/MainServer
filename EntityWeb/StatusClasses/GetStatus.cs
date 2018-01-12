@@ -47,7 +47,7 @@ namespace EntityWeb.StatusClasses
                     ServerStatus.UpdateDesktop(false);
                 }
 
-                using (SqlConnection conn = new SqlConnection("Server=192.168.1.197;Database=Control;User ID=sa;pwd=malencia55"))
+                using (SqlConnection conn = new SqlConnection("Server=192.168.1.63;Database=Control;User ID=sa;pwd=malencia55"))
                 {
                     try
                     {
