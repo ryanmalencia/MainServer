@@ -47,6 +47,7 @@
     <Compile Include="APICalls\AgentAPI.cs" />
     <Compile Include="APICalls\CampusEventAPI.cs" />
     <Compile Include="APICalls\ConcertAPI.cs" />
+    <Compile Include="APICalls\FileAPI.cs" />
     <Compile Include="APICalls\JobTaskAPI.cs" />
     <Compile Include="APICalls\JobAPI.cs" />
     <Compile Include="APICalls\LocationAPI.cs" />

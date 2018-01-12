@@ -68,5 +68,13 @@ namespace WebAPIClient
 
             return returnstring;
         }
+
+        public static void DownloadFile(string http, string dest)
+        {
+            using (var client = new WebClient())
+            {
+                client.DownloadFile(http, dest);
+            }
+        }
     }
 }

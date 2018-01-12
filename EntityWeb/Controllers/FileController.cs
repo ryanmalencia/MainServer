@@ -36,5 +36,12 @@ namespace EntityWeb.Controllers
             text = "Success";
             return RedirectToAction("Jobs", "Home", new { message = text });
        }
+
+        [HttpGet]
+        public FileResult Download(string filename)
+        {
+            byte[] fileBytes = System.IO.File.ReadAllBytes(Path.Combine(Server.MapPath("~/App_Data"), filename, filename + ".zip"));
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, filename);
+        }
     }
 }
