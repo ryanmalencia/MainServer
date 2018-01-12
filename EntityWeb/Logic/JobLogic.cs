@@ -35,33 +35,37 @@ namespace EntityWeb.Logic
         /// Set Job to Distributed State
         /// </summary>
         /// <param name="job">Job to set</param>
-        public void PutDist(Job job)
+        /// <returns>Updated job object</returns>
+        public Job PutDist(Job job)
         {
-            JobDB.PutDist(job);
+            return JobDB.PutDist(job);
         }
         /// <summary>
         /// Set Job to Started State
         /// </summary>
         /// <param name="job">Job to set</param>
-        public void PutStarted(Job job)
+        /// <returns>Updated job object</returns>
+        public Job PutStarted(Job job)
         {
-            JobDB.PutStarted(job);
+            return JobDB.PutStarted(job);
         }
         /// <summary>
         /// Set Job to Finished State
         /// </summary>
         /// <param name="job">Job to set</param>
-        public void PutFinished(Job job)
+        /// <returns>Updated job object</returns>
+        public Job PutFinished(Job job)
         {
-            JobDB.PutFinished(job);
+            return JobDB.PutFinished(job);
         }
         /// <summary>
-        /// Reset Job state
+        /// Reset Job State
         /// </summary>
-        /// <param name="job">Job to reset</param>
-        public void PutReset(Job job)
+        /// <param name="job">Job to set</param>
+        /// <returns>Updated job object</returns>
+        public Job PutReset(Job job)
         {
-            JobDB.PutReset(job);
+            return JobDB.PutReset(job);
         }
     }
 }

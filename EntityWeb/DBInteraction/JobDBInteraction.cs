@@ -45,7 +45,7 @@ namespace EntityWeb.DBInteraction
             return DB.Jobs.FirstOrDefault(a => a.JobID == Id);
         }
 
-        public void PutDist(Job job)
+        public Job PutDist(Job job)
         {
             var Job = DB.Jobs.FirstOrDefault(a => a.JobID == job.JobID);
             if(Job != null)
@@ -55,9 +55,10 @@ namespace EntityWeb.DBInteraction
                 Job.Last_Distributed = DateTime.Now;
                 DB.SaveChanges();
             }
+            return Job;
         }
 
-        public void PutStarted(Job job)
+        public Job PutStarted(Job job)
         {
             var Job = DB.Jobs.FirstOrDefault(a => a.JobID == job.JobID);
             if(Job != null)
@@ -65,9 +66,10 @@ namespace EntityWeb.DBInteraction
                 Job.Started = 1;
                 DB.SaveChanges();
             }
+            return Job;
         }
 
-        public void PutFinished(Job job)
+        public Job PutFinished(Job job)
         {
             var Job = DB.Jobs.FirstOrDefault(a => a.JobID == job.JobID);
             if(Job != null)
@@ -85,9 +87,10 @@ namespace EntityWeb.DBInteraction
                 Job.Finished = 1;
                 DB.SaveChanges();
             }
+            return Job;
         }
 
-        public void PutReset(Job job)
+        public Job PutReset(Job job)
         {
             var Job = DB.Jobs.FirstOrDefault(a => a.JobID == job.JobID);
             if(Job != null)
@@ -96,6 +99,7 @@ namespace EntityWeb.DBInteraction
                 Job.Started = 0;
                 DB.SaveChanges();
             }
+            return Job;
         }
     }
 }

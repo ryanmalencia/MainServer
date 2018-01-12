@@ -27,11 +27,12 @@ namespace EntityWeb.Logic
         /// Add a new Agent to DB
         /// </summary>
         /// <param name="agent">Agent to Add</param>
-        public void Add(Agent agent)
+        public bool Add(Agent agent)
         {
-            AgentDB.Add(agent);
+            bool status = AgentDB.Add(agent);
             //Here we trigger SignalR to show that a new agent has been added
             AgentTicker.AddAgent(agent);
+            return status;
         }
         /// <summary>
         /// Get All Idle Agents
@@ -55,52 +56,55 @@ namespace EntityWeb.Logic
         /// </summary>
         /// <param name="AgentName">Agent Hostname to Set</param>
         /// <param name="pk_job">Job pk to Give to Agent</param>
-        public void SetAgentRunning(string AgentName, int pk_job)
+        public string SetAgentRunning(string AgentName, int pk_job)
         {
             string jobname = AgentDB.SetAgentRunning(AgentName, pk_job);
             AgentTicker.SetAgentRunning(AgentName,jobname);
+            return jobname;
         }
         /// <summary>
         /// Set Specified Agent to Queued State
         /// </summary>
         /// <param name="AgentName">Agent Hostname to Set</param>
-        public void SetAgentQueued(string AgentName)
+        public Agent SetAgentQueued(string AgentName)
         {
-            AgentDB.SetAgentQueued(AgentName);
+            return AgentDB.SetAgentQueued(AgentName);
         }
         /// <summary>
         /// Set Specified Agent to Idle State
         /// </summary>
         /// <param name="AgentName">Agent Hostname to Set</param>
-        public void SetAgentIdle(string AgentName)
+        public Agent SetAgentIdle(string AgentName)
         {
-            AgentDB.SetAgentIdle(AgentName);
+            Agent agent = AgentDB.SetAgentIdle(AgentName);
             AgentTicker.SetAgentIdle(AgentName);
+            return agent;
         }
         /// <summary>
         /// Set Specified Agent to Dead State
         /// </summary>
         /// <param name="AgentName">Agent Hostname to Set</param>
-        public void SetAgentDead(string AgentName)
+        public Agent SetAgentDead(string AgentName)
         {
-            AgentDB.SetAgentDead(AgentName);
+            Agent agent = AgentDB.SetAgentDead(AgentName);
             AgentTicker.SetAgentDead(AgentName);
+            return agent;
         }
         /// <summary>
         /// Delete the Specified Agent
         /// </summary>
         /// <param name="AgentName">Agent Hostname to Delete</param>
-        public void Delete(string AgentName)
+        public bool Delete(string AgentName)
         {
-            AgentDB.Delete(AgentName);
+            return AgentDB.Delete(AgentName);
         }
         /// <summary>
         /// Update an Agent
         /// </summary>
         /// <param name="Agent">Agent to Update</param>
-        public void Update(Agent Agent)
+        public Agent Update(Agent Agent)
         {
-            AgentDB.Update(Agent);
+            return AgentDB.Update(Agent);
         }
 
         public void Kill(string agent)

@@ -24,10 +24,19 @@ namespace EntityWeb.DBInteraction
             return Agents;
         }
 
-        public void Add(Agent agent)
+        public bool Add(Agent agent)
         {
+            int i = 0;
             DB.Agents.Add(agent);
-            DB.SaveChanges();
+            i = DB.SaveChanges();
+            if(i == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public string SetAgentRunning(string AgentName, int JobID)
@@ -61,7 +70,7 @@ namespace EntityWeb.DBInteraction
             return DB.Agents.FirstOrDefault(a => a.Name.ToLower() == AgentName.ToLower());
         }
 
-        public void SetAgentQueued(string AgentName)
+        public Agent SetAgentQueued(string AgentName)
         {
             var Agent = DB.Agents.FirstOrDefault(a => a.Name.ToLower() == AgentName.ToLower());
             if(Agent != null)
@@ -70,9 +79,10 @@ namespace EntityWeb.DBInteraction
                 Agent.Sent_Job = 1;
                 DB.SaveChanges();
             }
+            return Agent;
         }
 
-        public void SetAgentIdle(string AgentName)
+        public Agent SetAgentIdle(string AgentName)
         {
             var Agent = DB.Agents.FirstOrDefault(a => a.Name.ToLower() == AgentName.ToLower());
             if(Agent != null)
@@ -83,9 +93,10 @@ namespace EntityWeb.DBInteraction
                 Agent.fk_job = 0;
                 DB.SaveChanges();
             }
+            return Agent;
         }
 
-        public void SetAgentDead(string AgentName)
+        public Agent SetAgentDead(string AgentName)
         {
             var Agent = DB.Agents.FirstOrDefault(a => a.Name.ToLower() == AgentName.ToLower());
             if(Agent != null)
@@ -95,19 +106,30 @@ namespace EntityWeb.DBInteraction
                 Agent.Sent_Job = 0;
                 DB.SaveChanges();
             }
+            return Agent;
         }
 
-        public void Delete(string AgentName)
+        public bool Delete(string AgentName)
         {
+            int i = 0;
             var Agent = DB.Agents.FirstOrDefault(a => a.Name.ToLower() == AgentName.ToLower());
             if(Agent != null)
             {
                 DB.Agents.Remove(Agent);
-                DB.SaveChanges();
+                i = DB.SaveChanges();
+                if(i == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
+            return true;
         }
 
-        public void Update(Agent Agent)
+        public Agent Update(Agent Agent)
         {
             var NewAgent = DB.Agents.FirstOrDefault(a => a.Name.ToLower() == Agent.Name.ToLower());
             if(NewAgent != null)
@@ -118,6 +140,7 @@ namespace EntityWeb.DBInteraction
                     DB.SaveChanges();
                 }
             }
+            return NewAgent;
         }
     }
 }

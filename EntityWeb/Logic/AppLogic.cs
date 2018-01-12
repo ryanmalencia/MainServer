@@ -1,6 +1,5 @@
 ﻿using EntityWeb.DBInteraction;
 using DataTypes;
-using SignalR.AgentTicker;
 
 namespace EntityWeb.Logic
 {
