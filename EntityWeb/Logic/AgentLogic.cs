@@ -96,7 +96,12 @@ namespace EntityWeb.Logic
         /// <param name="AgentName">Agent Hostname to Delete</param>
         public bool Delete(string AgentName)
         {
-            return AgentDB.Delete(AgentName);
+            bool status = AgentDB.Delete(AgentName);
+            if (status)
+            {
+                AgentTicker.DeleteAgent(AgentName);
+            }
+            return status;
         }
         /// <summary>
         /// Update an Agent

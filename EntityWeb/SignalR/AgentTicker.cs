@@ -67,6 +67,11 @@ namespace SignalR.AgentTicker
             Clients.All.addAgent(agent.Name);
         }
 
+        public void DeleteAgent(string AgentName)
+        {
+            Clients.All.deleteAgent(AgentName);
+        }
+
         public void SetAgentRunning(string AgentName,string JobName)
         {
             Clients.All.updateRunning(AgentName,JobName);

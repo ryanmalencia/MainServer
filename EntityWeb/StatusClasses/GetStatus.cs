@@ -59,7 +59,7 @@ namespace EntityWeb.StatusClasses
                         ServerStatus.UpdateSQL(false);
                     }
                 }
-                Thread.Sleep(5000);
+                Thread.Sleep(1500);
             }
         }
     }

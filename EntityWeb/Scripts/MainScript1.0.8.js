@@ -9,8 +9,6 @@
     };
 }
 
-
-
 $(function () {
 
     var ticker = $.connection.InformationHub, $infoTable = $('#infoTable'), rowTemplate = '<tr data-symbol="{Name}" style="background-color:{Color}"><td width="10%">{ID}</td><td width="40%">{Name}</td><td width="40%">{Running}</td><td class="view" width="10%">View</td></tr>';
@@ -95,5 +93,13 @@ $(function () {
             $infoTableBody.append(rowTemplate.supplant(info));
         }
     }
+
+    ticker.client.deleteAgent = function (name) {
+        var $therow = $infoTableBody.find('tr[data-symbol=' + name + ']');
+        if ($therow[0] != null) {
+            $therow[0].parentNode.removeChild($therow[0]);
+        }
+    }
+
     $.connection.hub.start().done(init);
 });
