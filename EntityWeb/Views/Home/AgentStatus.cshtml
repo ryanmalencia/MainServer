@@ -121,11 +121,11 @@
 
         function getData(data) {
             mach = data.split('?')[1];
-            $.getJSON('http://74.109.196.114/api/agent/getagent/' + mach, function (d) {
+            $.getJSON('http://192.168.1.203/api/agent/getagent/' + mach, function (d) {
                 var obj = JSON.parse(d);
                 startR(obj.IP,obj.Name);
             });
-            $.getJSON('http://74.109.196.114/api/log/getlogsbyagent/' + mach, function (d) {
+            $.getJSON('http://192.168.1.203/api/log/getlogsbyagent/' + mach, function (d) {
                 var obj = JSON.parse(d);
                 jQuery.each(obj.Logs, function () {
                     var levelCell = $("<td>").css("white-space", "nowrap").text(this.LogLevel);
@@ -139,14 +139,14 @@
         }
 
         function kill(name) {
-            $.post('http://74.109.196.114/api/agent/kill/' + name, function (d) {
+            $.post('http://192.168.1.203/api/agent/kill/' + name, function (d) {
                 $("#status")[0].innerHTML = "Killed";
             });
         }
 
         function shutdown(name) {
             $("#status")[0].innerHTML = "Shutdown";
-            $.post('http://74.109.196.114/api/agent/shutdown/' + name, function (d) {
+            $.post('http://192.168.1.203/api/agent/shutdown/' + name, function (d) {
 
             });
         }
@@ -182,7 +182,7 @@
 
 
             /*
-            var connection = $.hubConnection("http://74.109.196.114");
+            var connection = $.hubConnection("http://192.168.1.203");
             var hub = connection.createHubProxy("AgentStatusHub");
             hub.on("updateJob", Message);
             hub.on("updateHardware", Hardware);
