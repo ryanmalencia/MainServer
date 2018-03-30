@@ -10,6 +10,7 @@ namespace EntityWeb.StatusClasses
         private ServerStatus ServerStatus = ServerStatus.Instance;
         private Thread LiveStatus;
         private Ping pinger;
+
         public GetStatus()
         {
             LiveStatus = new Thread(CheckStatus);
